@@ -1,1 +1,494 @@
-
+{
+  "swagger": "2.0",
+  "info": {
+    "description": {
+      "$ref": "../md_files/README.md"
+    },
+    "version": "v0.1.2",
+    "title": "RP Controller API"
+  },
+  "x-servers": [
+    {
+      "url": "https://se-exchange-uat-sandbox.apigee.net/rpc",
+      "description": "Sandbox"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/v1/protocols/bacnet/local/objects": {
+      "get": {
+        "tags": [
+          "local object"
+        ],
+        "summary": "Getting Object List",
+        "description": "A list of objectIds that are accessible via rest api will be returned.  \n Here's a list of object types available \n 0: Analog Input Object \n 1: Analog Output Object \n 2: Analog Value Object \n 3: Binary Input Object \n 4: Binary Output Object \n 5: Binary Value Object \n 13: Multi-state Input Object \n 14: Multi-state Output Object \n 19: Multi-state Value Object \n 45: Integer Value Object ",
+        "operationId": "gettingobject",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "objectType",
+            "in": "query",
+            "description": "This is optional. BACnet Object type",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Objects"
+            }
+          }
+        }
+      }
+    },
+    "/v1/protocols/bacnet/local/objects/{objectId}": {
+      "get": {
+        "tags": [
+          "local object"
+        ],
+        "summary": "Find BACnet object by ID",
+        "description": "Returns a single object",
+        "operationId": "getObjectById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Object not found"
+          }
+        }
+      }
+    },
+    "/v1/protocols/bacnet/local/objects/{objectId}/properties": {
+      "get": {
+        "tags": [
+          "local object"
+        ],
+        "summary": "Getting Property List",
+        "description": "A list of propertyIds that are accessible via rest api will be returned.",
+        "operationId": "getObjectPropertiesById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Properties"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Properties not found"
+          }
+        }
+      }
+    },
+    "/v1/protocols/bacnet/local/objects/{objectId}/properties/{propertId}": {
+      "get": {
+        "tags": [
+          "local object"
+        ],
+        "summary": "Find BACnet property by ID",
+        "description": "Returns a single property",
+        "operationId": "getPropertyById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "propertId",
+            "in": "path",
+            "description": "unique property identifier",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "local object"
+        ],
+        "summary": "Updated value of property",
+        "description": "Update value of property and return it.",
+        "operationId": "updatePropertyValue",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "objectId",
+            "in": "path",
+            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "propertId",
+            "in": "path",
+            "description": "unique property identifier",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide value anyValueOf based on property type",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PropertyRaram"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          },
+          "400": {
+            "description": "Invalid value supplied"
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Objects": {
+      "type": "object",
+      "properties": {
+        "objectIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "Object": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "objectType": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "profileName": {
+          "type": "string"
+        }
+      }
+    },
+    "Properties": {
+      "type": "object",
+      "properties": {
+        "propertyIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "Property": {
+      "type": "object",
+      "properties": {
+        "propertyId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "anyValueOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IntValue"
+          },
+          "example": [
+            {
+              "type": "boolean",
+              "isArray": false,
+              "value": true
+            },
+            {
+              "type": "integer",
+              "isArray": false,
+              "value": 0
+            },
+            {
+              "type": "string",
+              "isArray": false,
+              "value": "string"
+            },
+            {
+              "type": "float",
+              "isArray": false,
+              "value": 1.2
+            },
+            {
+              "type": "integer",
+              "isArray": true,
+              "value": [
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        "readOnly": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PropertyRaram": {
+      "type": "object",
+      "properties": {
+        "anyValueOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IntValue"
+          },
+          "example": [
+            {
+              "type": "boolean",
+              "isArray": false,
+              "value": true
+            },
+            {
+              "type": "integer",
+              "isArray": false,
+              "value": 0
+            },
+            {
+              "type": "string",
+              "isArray": false,
+              "value": "string"
+            },
+            {
+              "type": "float",
+              "isArray": false,
+              "value": 1.2
+            },
+            {
+              "type": "integer",
+              "isArray": true,
+              "value": [
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "IntValue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "isArray": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "integer"
+        }
+      }
+    },
+    "BooleanValue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "isArray": {
+          "type": "boolean"
+        },
+        "value": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "remainings": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "eventList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SingleEvent"
+          }
+        }
+      }
+    },
+    "SingleEvent": {
+      "type": "object",
+      "properties": {
+        "objectId": {
+          "type": "integer"
+        },
+        "eventState": {
+          "type": "string"
+        },
+        "acknowledgedTransitions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "timeStamp": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notifyType": {
+          "type": "string"
+        },
+        "eventEnabled": {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "priorities": {
+          "type": "integer",
+          "format": "int8"
+        }
+      }
+    },
+    "EventNotified": {
+      "type": "object",
+      "properties": {
+        "outOfSync": {
+          "type": "boolean"
+        },
+        "remainings": {
+          "type": "integer"
+        },
+        "eventNotifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SingleEventNotified"
+          }
+        }
+      }
+    },
+    "SingleEventNotified": {
+      "type": "object",
+      "properties": {
+        "sequenceId": {
+          "type": "integer"
+        },
+        "objectId": {
+          "type": "integer"
+        },
+        "timeStamp": {
+          "type": "string"
+        },
+        "notificationClass": {
+          "type": "integer"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "notifyType": {
+          "type": "string"
+        },
+        "ackRequired": {
+          "type": "boolean"
+        },
+        "fromState": {
+          "type": "string"
+        },
+        "toState": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about RP-C SmartX IP Controller",
+    "url": "https://www.se.com/us/en/download/document/03-30017/"
+  }
+}
