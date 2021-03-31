@@ -5,11 +5,11 @@
 
 ## API overview and usage
 
-This document explain the usage of the `RP Controller` API.
+This document explain the usage of the **RP** **Controller** API.
 
 This API allows to get BACnet objects and properties from RP Controller.
 
-Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric ?? for more information. 
+Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric **??** for more information. 
 
 ** Note: need to know who to contact more information **
 
@@ -36,12 +36,16 @@ Of course, this partner need to enable web api feature on RP controller.
 1.	Need to access to RP controller via WorkStation Building Operation
 
 2.	Need to configure web api feature on RP controller. For example, enabling web api, IP & port Settings, Security, admin user and password, and so on
-<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-\t** Note: need to create an image or screen shot
 
-3.	Need to create Self Signed certificate and import this to RP controller and client application
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-\t** Note: need to create an image or screen shot
+
+	** Note: need to create an image or screen shot. It will be updated when it is ready.
+
+3.	Need to import certificates and keys to RP controller and client application for authentication
+
+<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
+
+	** Note: need to create an image or screen shot. It will be updated when it is ready.
 
 
 ## Limitations
@@ -51,15 +55,61 @@ Amount of calls to the API in the SANDBOX are limited.
 To get a full experience and extend the thresholds, please enable WEB API on RP controller and use the production environment.
 
 ## Authentication guide
-There are two layers of authentication to authenticate and allow access to the API.
-1. Server and Client Certificate Authentication
-	Server Certificate Authentication
-	**// User can create self signed certificate for server authentication. User need to creat certificate chain to generate CA Certificate for applications or application users.
+
+There are two layers of authentication to create secure connection between server and clilent.
+
+1. Server Certificate Validation and Client Certificate Authentication
 	
-	Client Certificate Authentication
-	**// User can create self signed certificate for client authentication. User need to creat certificate chain to generate entity certificate(leaf certificate) for applications or application users.
+	- Server Certificate Validation
+	
+	To protect https client, server need to return certificate to client. Client should be able to validate identity and ownership of certificate from server using CA Certificate.
+	
+	You can create self-signed certificates to set up this.
+	
+	First of all, Generate root key. To protect your key, please set up pass phrase.
+	
+	>openssl genrsa -des3 -out rootCA.key 2048
+	
+	Then, generate a root certificate. You need to fill out a list of information.
+	
+	>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
+	
+	Now, you need to create server key and certificate using this root certificate.
+	
+	Generate server key.
+	
+	>openssl genrsa -out server.key 2048
+	
+	Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+	
+	>openssl req -new -key server.key -out server.csr
+	
+	Generate configuration file (server.ext)
+	
+	|authorityKeyIdentifier=keyid,issuer
+	|basicConstraints=CA:FALSE
+	|keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+	|subjectAltName = @alt_names
+	|[alt_names]
+	|IP.1 = 192.168.0.104
+	|or
+	|DNS.1 = www.google.com
+	
+	Generate server Certificate.
+	
+	>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
+	
+	Convert server key and certificate to DER format
+	
+	>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
+	>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
+	
+	- Client Certificate Authentication
+	
+	**Note: User can create self signed certificate for client authentication. User need to creat certificate chain to generate entity certificate(leaf certificate) for applications or application users.
 
 2. Token based user authentication 
+
 	User need to create a list of users on RP controller. Client application first sends a request to RP controller with a valid credencials, then RP controller sends instance access token to the client as a response. The client application use the token to access APIs until the token is valid.
 	
 	
