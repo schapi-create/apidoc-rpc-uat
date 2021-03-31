@@ -1,7 +1,7 @@
 ## Overview
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-**//Note: We will create an image for RP/MP apis
+** Note: We will create an image for RP/MP apis**
 
 ## API overview and usage
 
@@ -9,9 +9,9 @@ This document explain the usage of the `RP Controller` API.
 
 This API allows to get BACnet objects and properties from RP Controller.
 
-Please note that you need to configure web service feature on RP Controller to use this API. Contact your Schneider Electric ?? for more information. 
+Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric ?? for more information. 
 
-**// need to know who to contact more information
+** Note: need to know who to contact more information **
 
 This document provides a general tutorial for users who want to consume the RP Controller API.
 
@@ -19,29 +19,29 @@ This document provides a general tutorial for users who want to consume the RP C
 
 Thanks to this API, a Schneider Electric partner can remotely have access to BACnet objects and properties on RP Controller. 
 
-Of course, this partner need to enable web service feature on RP controller. 
+Of course, this partner need to enable web api feature on RP controller. 
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
 
-**// Need to create an image to show how it works (how connections look like)
+** Note: Need to create an image to show how it works (how connections look like)
 
-**// Need to describe the image
+** Note: Need to describe the image
 
 # Developer Guide
 
 ## How to enable WEB API on RP Controller
 
-**// need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB Service. This section will be updated when it is ready.
+** Note: need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.
 
-1.	**// need to access to RP controller via WorkStation Building Operation
+1.	Need to access to RP controller via WorkStation Building Operation
 
-2.	**// need to configure web servoce feature on RP controller. For example, enabling feature, IP & port Settings, Security, admin user and password, and so on
+2.	Need to configure web api feature on RP controller. For example, enabling web api, IP & port Settings, Security, admin user and password, and so on
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-**// need to create an image or screen shot
+\t** Note: need to create an image or screen shot
 
-3.	**// user need to create Self Signed certificate and import this to RP controller and client application
+3.	Need to create Self Signed certificate and import this to RP controller and client application
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-**// need to create an image or screen shot
+\t** Note: need to create an image or screen shot
 
 
 ## Limitations
