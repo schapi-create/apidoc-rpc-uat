@@ -193,6 +193,20 @@
             "format": "int64"
           },
           {
+            "name": "index",
+            "in": "query",
+            "description": "This is optional. It can be used to update a value in array.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "priorityIndex",
+            "in": "query",
+            "description": "This is optional. This will be used to update priority array via present value",
+            "required": false,
+            "type": "integer"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "Provide value anyValueOf based on property type",
