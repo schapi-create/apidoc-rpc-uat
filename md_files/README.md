@@ -1,7 +1,7 @@
 ## Overview
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-** Note: We will create an image for RP/MP apis**
+**Note:** We will create an image for RP/MP apis**
 
 ## API overview and usage
 
@@ -11,7 +11,7 @@ This API allows to get BACnet objects and properties from RP Controller.
 
 Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric **??** for more information. 
 
-** Note: need to know who to contact more information **
+**Note:** need to know who to contact more information **
 
 This document provides a general tutorial for users who want to consume the RP Controller API.
 
@@ -23,15 +23,15 @@ Of course, this partner need to enable web api feature on RP controller.
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
 
-** Note: Need to create an image to show how it works (how connections look like)
+**Note:** Need to create an image to show how it works (how connections look like)
 
-** Note: Need to describe the image
+**Note:** Need to describe the image
 
 # Developer Guide
 
 ## How to enable WEB API on RP Controller
 
-** Note: need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.
+**Note:** need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.
 
 1.	Need to access to RP controller via WorkStation Building Operation
 
@@ -39,13 +39,13 @@ Of course, this partner need to enable web api feature on RP controller.
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
-	** Note: need to create an image or screen shot. It will be updated when it is ready.
+**Note:** need to create an image or screen shot. It will be updated when it is ready.
 
 3.	Need to import certificates and keys to RP controller and client application for authentication
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
-	** Note: need to create an image or screen shot. It will be updated when it is ready.
+**Note:** need to create an image or screen shot. It will be updated when it is ready.
 
 
 ## Limitations
@@ -64,7 +64,7 @@ There are two layers of authentication to create secure connection between serve
 	
 	To protect https client, server need to return certificate to client. Client should be able to validate identity and ownership of certificate from server using CA Certificate.
 	
-	You can create self-signed certificates to set up this.
+	You can create self-signed certificates to set this up.
 	
 	First of all, Generate root key. To protect your key, please set up pass phrase.
 	
@@ -84,29 +84,69 @@ There are two layers of authentication to create secure connection between serve
 	
 	>openssl req -new -key server.key -out server.csr
 	
-	Generate configuration file (server.ext)
+	Generate configuration file (server.ext). If you have domain name server, you can add address of your RP Controller. Otherwise, you can add ip address of your RP Controller.
 	
-	|authorityKeyIdentifier=keyid,issuer
-	|basicConstraints=CA:FALSE
-	|keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-	|subjectAltName = @alt_names
-	|[alt_names]
-	|IP.1 = 192.168.0.104
-	|or
-	|DNS.1 = www.google.com
+	>authorityKeyIdentifier=keyid,issuer
+	>keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+	>basicConstraints=CA:FALSE
+	>subjectAltName = @alt_names
+	>[alt_names]
+	>IP.1 = 192.168.0.100
+	>or
+	>DNS.1 = www.your-domain.com
 	
 	Generate server Certificate.
 	
 	>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
 	
-	Convert server key and certificate to DER format
+	Convert server key and certificate to DER format to import to RP Controler
 	
 	>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
 	>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 	
 	- Client Certificate Authentication
 	
-	**Note: User can create self signed certificate for client authentication. User need to creat certificate chain to generate entity certificate(leaf certificate) for applications or application users.
+	Server can authenticate a client using Certificate. You can also create self-signed certificates to set this up.
+	
+	First of all, Generate root key. To protect your key, please set up pass phrase.
+	
+	>openssl genrsa -des3 -out rootCA.key 2048
+	
+	Then, generate a root certificate. You need to fill out a list of information.
+	
+	>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
+	
+	Now, you need to create client key and certificate using this root certificate.
+	
+	Generate client key.
+	
+	>openssl genrsa -out client.key 2048
+	
+	Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+	
+	>openssl req -new -key client.key -out client.csr
+	
+	Generate configuration file (client.ext).
+	
+	>authorityKeyIdentifier = keyid,issuer
+	>keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
+	>basicConstraints = CA:FALSE
+	>nsCertType = client, email
+	>nsComment = "Client Certificate"
+	>subjectKeyIdentifier = hash
+	>extendedKeyUsage = clientAuth, emailProtection
+	
+	Generate client Certificate.
+	
+	>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
+	
+	Convert root CA certificate to DER format to import to RP Controler
+	
+	>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.cer
+	
+	If you are using soap ui for development, you need to merge client key and certificate to pfx format.
+
+	>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
 2. Token based user authentication 
 
