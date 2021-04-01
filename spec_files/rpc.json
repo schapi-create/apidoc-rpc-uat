@@ -4,7 +4,7 @@
     "description": {
       "$ref": "../md_files/README.md"
     },
-    "version": "v0.1.7",
+    "version": "v0.1.8",
     "title": "RP Controller API"
   },
   "x-servers": [

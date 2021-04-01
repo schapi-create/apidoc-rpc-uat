@@ -14,7 +14,7 @@ This API allows to get BACnet objects and properties from RP Controller.
 
 Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric **??** for more information. 
 
-***Note: need to know who to contact more information ***
+***Note: need to know who to contact more information***
 
 This document provides a general tutorial for users who want to consume the RP Controller API.
 
