@@ -2,9 +2,9 @@
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
-```diff
-+ **Note:** We will create an image for RP/MP apis
-```
+
+***Note: We will create an image for RP/MP apis***
+
 
 ## API overview and usage
 
