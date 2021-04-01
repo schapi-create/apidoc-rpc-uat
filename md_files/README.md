@@ -1,7 +1,10 @@
 ## Overview
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
-**Note:** We will create an image for RP/MP apis
+
+```
++ **Note:** We will create an image for RP/MP apis
+```
 
 ## API overview and usage
 
@@ -86,14 +89,16 @@ There are two layers of authentication to create secure connection between serve
 	
 	Generate configuration file (server.ext). If you have domain name server, you can add address of your RP Controller. Otherwise, you can add ip address of your RP Controller.
 	
-	>authorityKeyIdentifier=keyid,issuer\
-	>keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment\
-	>basicConstraints=CA:FALSE\
-	>subjectAltName = @alt_names\
-	>[alt_names]\
-	>IP.1 = 192.168.0.100\
-	>or\
-	>DNS.1 = www.your-domain.com\
+	```
+	authorityKeyIdentifier=keyid,issuer\
+	keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment\
+	basicConstraints=CA:FALSE\
+	subjectAltName = @alt_names\
+	[alt_names]\
+	IP.1 = 192.168.0.100\
+	or\
+	DNS.1 = www.your-domain.com\
+	```
 	
 	Generate server Certificate.
 	
@@ -129,13 +134,15 @@ There are two layers of authentication to create secure connection between serve
 	
 	Generate configuration file (client.ext).
 	
-	>authorityKeyIdentifier = keyid,issuer\
-	>keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment\
-	>basicConstraints = CA:FALSE\
-	>nsCertType = client, email\
-	>nsComment = "Client Certificate"\
-	>subjectKeyIdentifier = hash\
-	>extendedKeyUsage = clientAuth, emailProtection\
+	```
+	authorityKeyIdentifier = keyid,issuer\
+	keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment\
+	basicConstraints = CA:FALSE\
+	nsCertType = client, email\
+	nsComment = "Client Certificate"\
+	subjectKeyIdentifier = hash\
+	extendedKeyUsage = clientAuth, emailProtection\
+	```
 	
 	Generate client Certificate.
 	
