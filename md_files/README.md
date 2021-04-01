@@ -14,7 +14,7 @@ This API allows to get BACnet objects and properties from RP Controller.
 
 Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric **??** for more information. 
 
-**Note:** need to know who to contact more information **
+***Note: need to know who to contact more information ***
 
 This document provides a general tutorial for users who want to consume the RP Controller API.
 
@@ -26,15 +26,15 @@ Of course, this partner need to enable web api feature on RP controller.
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
 
-**Note:** Need to create an image to show how it works (how connections look like)
+***Note: Need to create an image to show how it works (how connections look like)***
 
-**Note:** Need to describe the image
+***Note: Need to describe the image***
 
 # Developer Guide
 
 ## How to enable WEB API on RP Controller
 
-**Note:** need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.
+***Note: need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.***
 
 1.	Need to access to RP controller via WorkStation Building Operation
 
@@ -42,13 +42,13 @@ Of course, this partner need to enable web api feature on RP controller.
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
-**Note:** need to create an image or screen shot. It will be updated when it is ready.
+***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
 3.	Need to import certificates and keys to RP controller and client application for authentication
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
-**Note:** need to create an image or screen shot. It will be updated when it is ready.
+***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
 
 ## Limitations
