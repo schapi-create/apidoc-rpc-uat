@@ -8,21 +8,21 @@
 
 ## API overview and usage
 
-This document explain the usage of the **RP** **Controller** API.
+This document explain the usage of the **RP-C** API.
 
-This API allows to get BACnet objects and properties from RP Controller.
+This API allows to get BACnet objects and properties from RP-C.
 
-Please note that you need to configure web api feature on RP Controller to use this API. Contact your Schneider Electric **??** for more information. 
+Please note that you need to configure web api feature on RP-C to use this API. Contact your Schneider Electric **??** for more information. 
 
 ***Note: need to know who to contact more information***
 
-This document provides a general tutorial for users who want to consume the RP Controller API.
+This document provides a general tutorial for users who want to consume the RP-C API.
 
 ## How it works
 
-Thanks to this API, a Schneider Electric partner can remotely have access to BACnet objects and properties on RP Controller. 
+Thanks to this API, a Schneider Electric partner can remotely have access to BACnet objects and properties on RP-C. 
 
-Of course, this partner need to enable web api feature on RP controller. 
+Of course, this partner need to enable web api feature on RP-C. 
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
 
@@ -32,19 +32,19 @@ Of course, this partner need to enable web api feature on RP controller.
 
 # Developer Guide
 
-## How to enable WEB API on RP Controller
+## How to enable WEB API on RP-C
 
-***Note: need to explain how to enable WEB API on RP controller. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.***
+***Note: need to explain how to enable WEB API on RP-C. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.***
 
-1.	Need to access to RP controller via WorkStation Building Operation
+1.	Need to access to RP-C via WorkStation Building Operation
 
-2.	Need to configure web api feature on RP controller. For example, enabling web api, IP & port Settings, Security, admin user and password, and so on
+2.	Need to configure web api feature on RP-C. For example, enabling web api, IP & port Settings, Security, admin user and password, and so on
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
 ***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
-3.	Need to import certificates and keys to RP controller and client application for authentication
+3.	Need to import certificates and keys to RP-C and client application for authentication
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
@@ -55,7 +55,7 @@ Of course, this partner need to enable web api feature on RP controller.
 
 Amount of calls to the API in the SANDBOX are limited.
 
-To get a full experience and extend the thresholds, please enable WEB API on RP controller and use the production environment.
+To get a full experience and extend the thresholds, please enable WEB API on RP-C and use the production environment.
 
 ## Authentication guide
 
@@ -87,7 +87,7 @@ There are two layers of authentication to create secure connection between serve
 	
 	>openssl req -new -key server.key -out server.csr
 	
-	Generate configuration file (server.ext). If you have domain name server, you can add address of your RP Controller. Otherwise, you can add ip address of your RP Controller.
+	Generate configuration file (server.ext). If you have domain name server, you can add address of your RP-C. Otherwise, you can add ip address of your RP-C.
 	
 	```
 	authorityKeyIdentifier=keyid,issuer
@@ -104,7 +104,7 @@ There are two layers of authentication to create secure connection between serve
 	
 	>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
 	
-	Convert server key and certificate to DER format to import to RP Controler
+	Convert server key and certificate to DER format to import to RP-C
 	
 	>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
 	
@@ -148,7 +148,7 @@ There are two layers of authentication to create secure connection between serve
 	
 	>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
 	
-	Convert root CA certificate to DER format to import to RP Controler
+	Convert root CA certificate to DER format to import to RP-C
 	
 	>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.cer
 	
@@ -158,7 +158,7 @@ There are two layers of authentication to create secure connection between serve
 
 2. Token based user authentication 
 
-	User need to create a list of users on RP controller. Client application first sends a request to RP controller with a valid credencials, then RP controller sends instance access token to the client as a response. The client application use the token to access APIs until the token is valid.
+	User need to create a list of users on RP-C. Client application first sends a request to RP-C with a valid credencials, then RP-C sends instance access token to the client as a response. The client application use the token to access APIs until the token is valid.
 	
 	
 ## Response Codes
@@ -228,7 +228,7 @@ When you reach the connection limit, we'll throttle server response. If any of y
 ### 500
 InternalServerError
 An unexpected internal error has occurred. Please contact Support for more information.
-This error lets you know RP Controller have experienced a problem. Although this is rare, please contact exchange.support@se.com to let us know that you've encountered this error. **// who to contact more information
+This error lets you know RP-C have experienced a problem. Although this is rare, please contact exchange.support@se.com to let us know that you've encountered this error. **// who to contact more information
 
 ### 503
 ComplianceRelated
