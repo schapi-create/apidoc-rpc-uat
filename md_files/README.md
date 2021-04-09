@@ -10,19 +10,19 @@
 
 This document explain the usage of the **RP-C** API.
 
-This API allows to get BACnet objects and properties from RP-C.
+This Web API allows you to obtain BACnet objects and properties from the RP-C.
 
-Please note that you need to configure web api feature on RP-C to use this API. Contact your Schneider Electric **??** for more information. 
+Please note that you need to configure Web API feature on RP-C to use this API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
 
-***Note: need to know who to contact more information***
+***Note: need to know PSS is right place to contact more information about Web API***
 
 This document provides a general tutorial for users who want to consume the RP-C API.
 
 ## How it works
 
-Thanks to this API, a Schneider Electric partner can remotely have access to BACnet objects and properties on RP-C. 
+By using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-c. 
 
-Of course, this partner need to enable web api feature on RP-C. 
+First, the partner needs to enable the Web API feature on RP-C. 
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
 
@@ -32,13 +32,13 @@ Of course, this partner need to enable web api feature on RP-C.
 
 # Developer Guide
 
-## How to enable WEB API on RP-C
+## How to enable Web API on RP-C
 
-***Note: need to explain how to enable WEB API on RP-C. Currently, we are working on configuration menu for WEB api. This section will be updated when it is ready.***
+***Note: need to explain how to enable Web API on RP-C. Currently, we are working on configuration menu for Web API. This section will be updated when it is ready.***
 
 1.	Need to access to RP-C via WorkStation Building Operation
 
-2.	Need to configure web api feature on RP-C. For example, enabling web api, IP & port Settings, Security, admin user and password, and so on
+2.	Need to configure Web API feature on RP-C. For example, enabling Web API, IP & port Settings, Security, admin user and password, and so on
 
 <img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
 
@@ -53,15 +53,15 @@ Of course, this partner need to enable web api feature on RP-C.
 
 ## Limitations
 
-Amount of calls to the API in the SANDBOX are limited.
+The number of calls to the API in the SANDBOX are limited.
 
-To get a full experience and extend the thresholds, please enable WEB API on RP-C and use the production environment.
+To fully experience and extend the thresholds, please enable the Web API on the RP-C and use the environment.
 
 ## Authentication guide
 
 There are two layers of authentication to create secure connection between server and clilent.
 
-1. Server Certificate Validation and Client Certificate Authentication
+- Server Certificate Validation and Client Certificate Authentication
 	
 	- Server Certificate Validation
 	
@@ -156,7 +156,7 @@ There are two layers of authentication to create secure connection between serve
 
 	>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
-2. Token based user authentication 
+- Token based user authentication 
 
 	User need to create a list of users on RP-C. Client application first sends a request to RP-C with a valid credencials, then RP-C sends instance access token to the client as a response. The client application use the token to access APIs until the token is valid.
 	
