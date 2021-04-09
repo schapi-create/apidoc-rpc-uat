@@ -65,96 +65,96 @@ There are two layers of authentication to create secure connection between serve
 	
 	- Server Certificate Validation
 	
-	To protect https client, server need to return certificate to client. Client should be able to validate identity and ownership of certificate from server using CA Certificate.
-	
-	You can create self-signed certificates to set this up.
-	
-	First of all, Generate root key. To protect your key, please set up pass phrase.
-	
-	>openssl genrsa -des3 -out rootCA.key 2048
-	
-	Then, generate a root certificate. You need to fill out a list of information.
-	
-	>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
-	
-	Now, you need to create server key and certificate using this root certificate.
-	
-	Generate server key.
-	
-	>openssl genrsa -out server.key 2048
-	
-	Generate CSR (Certificate Signing Request). You need to fill out a list of information.
-	
-	>openssl req -new -key server.key -out server.csr
-	
-	Generate configuration file (server.ext). If you have domain name server, you can add address of your RP-C. Otherwise, you can add ip address of your RP-C.
-	
-	```
-	authorityKeyIdentifier=keyid,issuer
-	keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-	basicConstraints=CA:FALSE
-	subjectAltName = @alt_names
-	[alt_names]
-	IP.1 = 192.168.0.100
-	or
-	DNS.1 = www.your-domain.com
-	```
-	
-	Generate server Certificate.
-	
-	>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
-	
-	Convert server key and certificate to DER format to import to RP-C
-	
-	>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
-	
-	>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
+		To protect https client, server need to return certificate to client. Client should be able to validate identity and ownership of certificate from server using CA Certificate.
+		
+		You can create self-signed certificates to set this up.
+		
+		1. First of all, Generate root key. To protect your key, please set up pass phrase.
+		
+		>openssl genrsa -des3 -out rootCA.key 2048
+		
+		Then, generate a root certificate. You need to fill out a list of information.
+		
+		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
+		
+		2. Now, you need to create server key and certificate using this root certificate.
+		
+		Generate server key.
+		
+		>openssl genrsa -out server.key 2048
+		
+		Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+		
+		>openssl req -new -key server.key -out server.csr
+		
+		Generate configuration file (server.ext). If you have domain name server, you can add address of your RP-C. Otherwise, you can add ip address of your RP-C.
+		
+		```
+		authorityKeyIdentifier=keyid,issuer
+		keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+		basicConstraints=CA:FALSE
+		subjectAltName = @alt_names
+		[alt_names]
+		IP.1 = 192.168.0.100
+		or
+		DNS.1 = www.your-domain.com
+		```
+		
+		Generate server Certificate.
+		
+		>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
+		
+		3. Convert server key and certificate to DER format to import to RP-C
+		
+		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
+		
+		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 	
 	- Client Certificate Authentication
 	
-	Server can authenticate a client using Certificate. You can also create self-signed certificates to set this up.
-	
-	First of all, Generate root key. To protect your key, please set up pass phrase.
-	
-	>openssl genrsa -des3 -out rootCA.key 2048
-	
-	Then, generate a root certificate. You need to fill out a list of information.
-	
-	>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
-	
-	Now, you need to create client key and certificate using this root certificate.
-	
-	Generate client key.
-	
-	>openssl genrsa -out client.key 2048
-	
-	Generate CSR (Certificate Signing Request). You need to fill out a list of information.
-	
-	>openssl req -new -key client.key -out client.csr
-	
-	Generate configuration file (client.ext).
-	
-	```
-	authorityKeyIdentifier = keyid,issuer
-	keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
-	basicConstraints = CA:FALSE
-	nsCertType = client, email
-	nsComment = "Client Certificate"
-	subjectKeyIdentifier = hash
-	extendedKeyUsage = clientAuth, emailProtection
-	```
-	
-	Generate client Certificate.
-	
-	>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
-	
-	Convert root CA certificate to DER format to import to RP-C
-	
-	>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.cer
-	
-	If you are using soap ui for development, you need to merge client key and certificate to pfx format.
+		Server can authenticate a client using Certificate. You can also create self-signed certificates to set this up.
+		
+		First of all, Generate root key. To protect your key, please set up pass phrase.
+		
+		>openssl genrsa -des3 -out rootCA.key 2048
+		
+		Then, generate a root certificate. You need to fill out a list of information.
+		
+		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
+		
+		Now, you need to create client key and certificate using this root certificate.
+		
+		Generate client key.
+		
+		>openssl genrsa -out client.key 2048
+		
+		Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+		
+		>openssl req -new -key client.key -out client.csr
+		
+		Generate configuration file (client.ext).
+		
+		```
+		authorityKeyIdentifier = keyid,issuer
+		keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
+		basicConstraints = CA:FALSE
+		nsCertType = client, email
+		nsComment = "Client Certificate"
+		subjectKeyIdentifier = hash
+		extendedKeyUsage = clientAuth, emailProtection
+		```
+		
+		Generate client Certificate.
+		
+		>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
+		
+		Convert root CA certificate to DER format to import to RP-C
+		
+		>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.cer
+		
+		If you are using soap ui for development, you need to merge client key and certificate to pfx format.
 
-	>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
+		>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
 - Token based user authentication 
 
