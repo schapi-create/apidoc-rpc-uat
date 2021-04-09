@@ -159,9 +159,9 @@ There are two layers of authentication to create secure connection between serve
 
 	Token-based authentication is a process where the client application first send a request to server with a valid credencials. The server send an Access Token back to the client as response. The client application then use the token to acess the restricted resources in the next request until the token is valid.
 	
-	RP-C returns JWT(JSON Web Token) which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
+	RP-C returns a Web Token which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
 	
-	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:50%;" /> 
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:40%;" /> 
 	
 ## Response Codes
 

@@ -22,7 +22,7 @@
         "tags": [
           "token"
         ],
-        "summary": "Getting Object List",
+        "summary": "Creating Token",
         "description": "A token(JWT) will be created and returned.",
         "operationId": "gettingtoken",
         "produces": [
@@ -53,7 +53,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of objectIds that are accessible via rest api will be returned.  \n Here's a list of object types available \n 0: Analog Input Object \n 1: Analog Output Object \n 2: Analog Value Object \n 3: Binary Input Object \n 4: Binary Output Object \n 5: Binary Value Object \n 13: Multi-state Input Object \n 14: Multi-state Output Object \n 19: Multi-state Value Object \n 45: Integer Value Object ",
+        "description": "A list of objectIds that are accessible via rest api will be returned.  \nHere's a list of object types available.\\\n0: Analog Input Object \\\n1: Analog Output Object \\\n2: Analog Value Object \\\n3: Binary Input Object \\\n4: Binary Output Object \\\n5: Binary Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer Value Object ",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
