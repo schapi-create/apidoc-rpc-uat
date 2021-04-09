@@ -4,7 +4,7 @@
     "description": {
       "$ref": "../md_files/README.md"
     },
-    "version": "v0.1.8",
+    "version": "v0.1.9",
     "title": "SmartX IP Series Controller - RP Series Web API"
   },
   "x-servers": [
@@ -23,19 +23,10 @@
           "token"
         ],
         "summary": "Creating Token",
-        "description": "A token(JWT) will be created and returned.",
+        "description": "A web token will be created and returned. The Client application then uses the token to access APIs in the next request until the token is valid.",
         "operationId": "gettingtoken",
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "objectType",
-            "in": "query",
-            "description": "This is optional. BACnet Object type",
-            "required": false,
-            "type": "integer"
-          }
         ],
         "responses": {
           "200": {
@@ -53,7 +44,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of objectIds that are accessible via rest api will be returned.  \nHere's a list of object types available.\\\n0: Analog Input Object \\\n1: Analog Output Object \\\n2: Analog Value Object \\\n3: Binary Input Object \\\n4: Binary Output Object \\\n5: Binary Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer Value Object ",
+        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog Input Object \\\n1: Analog Output Object \\\n2: Analog Value Object \\\n3: Binary Input Object \\\n4: Binary Output Object \\\n5: Binary Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
@@ -62,7 +53,7 @@
           {
             "name": "objectType",
             "in": "query",
-            "description": "This is optional. BACnet Object type",
+            "description": "This is optional. BACnet Object type.",
             "required": false,
             "type": "integer"
           }
@@ -92,10 +83,9 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           }
         ],
         "responses": {
@@ -120,7 +110,7 @@
           "local object"
         ],
         "summary": "Getting Property List",
-        "description": "A list of propertyIds that are accessible via rest api will be returned.",
+        "description": "A list of propertyIDs that are accessible using the Rest API will be returned.",
         "operationId": "getObjectPropertiesById",
         "produces": [
           "application/json"
@@ -129,10 +119,9 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           }
         ],
         "responses": {
@@ -166,18 +155,16 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           },
           {
             "name": "propertId",
             "in": "path",
             "description": "unique property identifier",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           }
         ],
         "responses": {
@@ -209,18 +196,16 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number. For example, 0000 0010 01 (object type: 9) / 00 0000 0000 0000 0000 1011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           },
           {
             "name": "propertId",
             "in": "path",
             "description": "unique property identifier",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           },
           {
             "name": "index",
@@ -274,8 +259,7 @@
           "type": "string"
         },
         "expires_in": {
-          "type": "integer",
-          "format": "int32"
+          "type": "integer"
         }
       }
     },
@@ -285,8 +269,7 @@
         "objectIds": {
           "type": "array",
           "items": {
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           }
         }
       }
@@ -295,12 +278,10 @@
       "type": "object",
       "properties": {
         "objectId": {
-          "type": "integer",
-          "format": "int64"
+          "type": "integer"
         },
         "objectType": {
-          "type": "integer",
-          "format": "int64"
+          "type": "integer"
         },
         "profileName": {
           "type": "string"
@@ -313,8 +294,7 @@
         "propertyIds": {
           "type": "array",
           "items": {
-            "type": "integer",
-            "format": "int64"
+            "type": "integer"
           }
         }
       }
@@ -323,8 +303,7 @@
       "type": "object",
       "properties": {
         "propertyId": {
-          "type": "integer",
-          "format": "int64"
+          "type": "integer"
         },
         "name": {
           "type": "string"
@@ -445,8 +424,7 @@
       "type": "object",
       "properties": {
         "remainings": {
-          "type": "integer",
-          "format": "int64"
+          "type": "integer"
         },
         "eventList": {
           "type": "array",
@@ -468,8 +446,7 @@
         "acknowledgedTransitions": {
           "type": "array",
           "items": {
-            "type": "integer",
-            "format": "int32"
+            "type": "integer"
           }
         },
         "timeStamp": {
@@ -488,8 +465,7 @@
           }
         },
         "priorities": {
-          "type": "integer",
-          "format": "int8"
+          "type": "integer"
         }
       }
     },
