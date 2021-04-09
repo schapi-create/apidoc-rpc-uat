@@ -161,7 +161,7 @@ There are two layers of authentication to create secure connection between serve
 	
 	RP-C returns JWT(JSON Web Token) which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
 	
-	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication.png" style="zoom:67%;" /> 
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:50%;" /> 
 	
 ## Response Codes
 
