@@ -69,7 +69,7 @@ There are two layers of authentication to create secure connection between serve
 		
 		You can create self-signed certificates to set this up.
 		
-		1. First of all, Generate root key. To protect your key, please set up pass phrase.
+		First of all, Generate root key. To protect your key, please set up pass phrase.
 		
 		>openssl genrsa -des3 -out rootCA.key 2048
 		
@@ -77,7 +77,7 @@ There are two layers of authentication to create secure connection between serve
 		
 		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
 		
-		2. Now, you need to create server key and certificate using this root certificate.
+		Now, you need to create server key and certificate using this root certificate.
 		
 		Generate server key.
 		
@@ -104,10 +104,9 @@ There are two layers of authentication to create secure connection between serve
 		
 		>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
 		
-		3. Convert server key and certificate to DER format to import to RP-C
+		Convert server key and certificate to DER format to import to RP-C
 		
-		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
-		
+		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der\		
 		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 	
 	- Client Certificate Authentication
@@ -158,12 +157,15 @@ There are two layers of authentication to create secure connection between serve
 
 - Token based user authentication 
 
-	User need to create a list of users on RP-C. Client application first sends a request to RP-C with a valid credencials, then RP-C sends instance access token to the client as a response. The client application use the token to access APIs until the token is valid.
+	Token-based authentication is a process where the client application first send a request to server with a valid credencials. The server send an Access Token back to the client as response. The client application then use the token to acess the restricted resources in the next request until the token is valid.
 	
+	RP-C returns JWT(JSON Web Token) which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
+	
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication.png" style="zoom:67%;" /> 
 	
 ## Response Codes
 
-We follow the error response format proposed in [RFC 7807](https://tools.ietf.org/html/rfc7807)also known as Problem Details for HTTP APIs.  As with our normal API responses, your client must be prepared to gracefully handle additional members of the response.
+The RP Series controller Web API follows the error response format proposed in [RFC 7807](https://tools.ietf.org/html/rfc7807)also known as Problem Details for HTTP APIs.  As with our normal API responses, your client must be prepared to gracefully handle additional members of the response.
 
 ### Unauthorized
 <!--<RedocResponse pointer={"#/components/responses/Unauthorized"} />-->
