@@ -20,15 +20,13 @@ This document provides a general tutorial for users who want to consume the RP-C
 
 ## How it works
 
-By using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-c. 
+By using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C. 
 
-First, the partner needs to enable the Web API feature on RP-C. 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/WebServiceUserScenario.png" style="zoom:50%;" /> 
 
-<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:50%;" /> 
+In case of Single RP-C, 3rd party client application can access to BACnet objects and properties if user credencial is valid. User will be authenticated based on User DB in RP-C.
 
-***Note: Need to create an image to show how it works (how connections look like)***
-
-***Note: Need to describe the image***
+In case of EcoStructure System with RP-C's, User will be authenticated based on centralized User DB on AS/ES.
 
 # Developer Guide
 
@@ -59,7 +57,7 @@ To fully experience and extend the thresholds, please enable the Web API on the 
 
 ## Authentication guide
 
-There are two layers of authentication to create secure connection between server and clilent.
+There are two layers of authentication to create secure connection between server and client.
 
 - Server Certificate Validation and Client Certificate Authentication
 	
@@ -106,7 +104,7 @@ There are two layers of authentication to create secure connection between serve
 		
 		Convert server key and certificate to DER format to import to RP-C
 		
-		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der\		
+		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der \
 		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 	
 	- Client Certificate Authentication
