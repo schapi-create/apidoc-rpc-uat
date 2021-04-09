@@ -1,6 +1,6 @@
 ## Overview
 
-<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
 
 
 ***Note: We will create an image for RP/MP apis***
@@ -38,13 +38,13 @@ In case of EcoStructure System with RP-C's, User will be authenticated based on 
 
 2.	Need to configure Web API feature on RP-C. For example, enabling Web API, IP & port Settings, Security, admin user and password, and so on
 
-<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
 
 ***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
 3.	Need to import certificates and keys to RP-C and client application for authentication
 
-<img src="https://www.se.com/us/en/assets/739/media/176145/1200/SpaceLogic-IP-Controllers-IC-1360x775.jpg" style="zoom:67%;" /> 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
 
 ***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
