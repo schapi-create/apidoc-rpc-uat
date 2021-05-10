@@ -83,7 +83,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
             "required": true,
             "type": "integer"
           }
@@ -110,7 +110,7 @@
           "local object"
         ],
         "summary": "Getting Property List",
-        "description": "A list of propertyIDs that are accessible using the Rest API will be returned.",
+        "description": "A list of propertyIDs that exist on the object will be\nreturned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.",
         "operationId": "getObjectPropertiesById",
         "produces": [
           "application/json"
@@ -155,7 +155,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
             "required": true,
             "type": "integer"
           },
@@ -196,7 +196,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
             "required": true,
             "type": "integer"
           },
@@ -217,7 +217,7 @@
           {
             "name": "priorityIndex",
             "in": "query",
-            "description": "This is optional. This will be used to update priority array via present value",
+            "description": "This is optional. This will be used to update priority array via\npresent value",
             "required": false,
             "type": "integer"
           },
@@ -285,6 +285,9 @@
         },
         "profileName": {
           "type": "string"
+        },
+        "objectName": {
+          "type": "string"
         }
       }
     },
@@ -304,9 +307,6 @@
       "properties": {
         "propertyId": {
           "type": "integer"
-        },
-        "name": {
-          "type": "string"
         },
         "anyValueOf": {
           "type": "array",

@@ -38,15 +38,15 @@ In case of EcoStructure System with RP-C's, User will be authenticated based on 
 
 2.	Need to configure Web API feature on RP-C. For example, enabling Web API, IP & port Settings, Security, admin user and password, and so on
 
-<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
 
-***Note: need to create an image or screen shot. It will be updated when it is ready.***
+	***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
 3.	Need to import certificates and keys to RP-C and client application for authentication
 
-<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
 
-***Note: need to create an image or screen shot. It will be updated when it is ready.***
+	***Note: need to create an image or screen shot. It will be updated when it is ready.***
 
 
 ## Limitations
@@ -160,6 +160,14 @@ There are two layers of authentication to create secure connection between serve
 	RP-C returns a Web Token which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
 	
 	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:40%;" /> 
+	
+- Centralized user authentication 
+
+	If you have EcoStructure System and use user authentication from there, you need to enable EWS Server (Eco Structure Web Services -> EWS Server Configuration). After that, you need to configure authentication on RP Web Server.
+	
+	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
+	
+	***Note: need to create an image or screen shot. It will be updated when it is ready.***
 	
 ## Response Codes
 
