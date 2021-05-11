@@ -38,6 +38,178 @@
         }
       }
     },
+    "/v1/usermngmt": {
+      "get": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "Getting a list of user Ids",
+        "description": "A list of user Ids will be returned.\\\nThis API will be available for admin user only.",
+        "operationId": "gettingusers",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "Createing a user account",
+        "description": "A user account will be created.\\\nThis API will be available for admin user only.",
+        "operationId": "creatinguser",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide user information to create a new account.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCreation"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        }
+      }
+    },
+    "/v1/usermngmt/admin": {
+      "put": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "Update admin user",
+        "description": "Updating admin user information.\\\nThis API will be available for admin user only.",
+        "operationId": "updateadmin",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide user information to create a new account.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/adminUser"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v1/usermngmt/{userId}": {
+      "get": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "Getting user information",
+        "description": "User information will be returned.\\\nThis API will be available for admin user only.",
+        "operationId": "gettinguser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "unique number of user.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "updating a user information",
+        "description": "User information will be updated.\\\nThis API will be available for admin user only.",
+        "operationId": "updateuser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "unique number of user.",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide user information to update.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdate"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user management"
+        ],
+        "summary": "Deleting user account",
+        "description": "User information will be returned.\\\nThis API will be available for admin user only.",
+        "operationId": "deleteuser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "unique number of user.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/v1/protocols/bacnet/local/objects": {
       "get": {
         "tags": [
@@ -517,6 +689,67 @@
           "type": "string"
         },
         "toState": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "userIds": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "UserCreation": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "userPassword": {
+          "type": "string"
+        },
+        "writePermission": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "writePermission": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserUpdate": {
+      "type": "object",
+      "properties": {
+        "userPassword": {
+          "type": "string"
+        },
+        "writePermission": {
+          "type": "boolean"
+        }
+      }
+    },
+    "adminUser": {
+      "type": "object",
+      "properties": {
+        "adminName": {
+          "type": "string"
+        },
+        "adminPassword": {
           "type": "string"
         }
       }
