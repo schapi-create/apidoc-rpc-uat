@@ -38,7 +38,7 @@
         }
       }
     },
-    "/v1/usermngmt": {
+    "/v1/local/usermngmt": {
       "get": {
         "tags": [
           "user management"
@@ -63,7 +63,7 @@
           "user management"
         ],
         "summary": "Createing a user account",
-        "description": "A user account will be created.\\\nThis API will be available for admin user only.",
+        "description": "A user account will be created.\\\nThis API will be available for admin user only.\\\n\nUser name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "creatinguser",
         "parameters": [
           {
@@ -89,13 +89,13 @@
         }
       }
     },
-    "/v1/usermngmt/admin": {
+    "/v1/local/usermngmt/admin": {
       "put": {
         "tags": [
           "user management"
         ],
         "summary": "Update admin user",
-        "description": "Updating admin user information.\\\nThis API will be available for admin user only.",
+        "description": "Updating admin user information.\\\nThis API will be available for admin user only.\\\n\nAdmin name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "updateadmin",
         "parameters": [
           {
@@ -118,7 +118,7 @@
         }
       }
     },
-    "/v1/usermngmt/{userId}": {
+    "/v1/local/usermngmt/{userId}": {
       "get": {
         "tags": [
           "user management"
