@@ -211,7 +211,7 @@
         "tags": [
           "webserver settings"
         ],
-        "summary": "trying new certs",
+        "summary": "Storing certs",
         "description": "Storing Certs running on a system currently.\\\nThis api should be called after /trynewcerts api to store new certificates.\\\nThis API will be available for admin user only.",
         "operationId": "storecerts",
         "produces": [
