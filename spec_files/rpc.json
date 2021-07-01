@@ -38,6 +38,192 @@
         }
       }
     },
+    "/v1/system/settings/webserver": {
+      "get": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "Getting web server settings",
+        "description": "Web Server Settings will be returned.\\\nThis API will be available for admin user only.",
+        "operationId": "gettingwebserversettings",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/WebServerSettings"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "Update web server settings",
+        "description": "Updating web server settings.\\\nThis API will be available for admin user only.",
+        "operationId": "updatewebserversettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Provide web server settings.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WebServerSettings"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/WebServerSettings"
+            }
+          }
+        }
+      }
+    },
+    "/v1/system/settings/webserver/certificate/servercert": {
+      "post": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "posting a new certificate to Server",
+        "description": "Setting a new server certificate.\\\nThis API will be available for admin user only.",
+        "operationId": "servercert",
+        "consumes": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "file",
+            "description": "Provide content of certificate in DER format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v1/system/settings/webserver/certificate/serverprivatekey": {
+      "post": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "posting a new private key to Server",
+        "description": "Setting a new server private key.\\\nThis API will be available for admin user only.",
+        "operationId": "serverprivatekey",
+        "consumes": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "file",
+            "description": "Provide content of key in DER format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v1/system/settings/webserver/certificate/clientcacert": {
+      "post": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "posting a new client CA certificate to Server",
+        "description": "Setting a new client CA certificate.\\\nThis API will be available for admin user only.",
+        "operationId": "clientcacert",
+        "consumes": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "file",
+            "description": "Provide content of ca cert in DER format.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v1/system/settings/webserver/certificate/trynewcerts": {
+      "post": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "trying new certs",
+        "description": "Trying new certs by restarting web server.\\\nIf you reboot your device or restart web server without storing it, new certs will be discarded.\\\nThis API will be available for admin user only.",
+        "operationId": "trynewcert",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/v1/system/settings/webserver/certificate/storecerts": {
+      "post": {
+        "tags": [
+          "webserver settings"
+        ],
+        "summary": "trying new certs",
+        "description": "Storing Certs running on a system currently.\\\nThis api should be called after /trynewcerts api to store new certificates.\\\nThis API will be available for admin user only.",
+        "operationId": "storecerts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
     "/v1/local/usermngmt": {
       "get": {
         "tags": [
@@ -689,6 +875,29 @@
           "type": "string"
         },
         "toState": {
+          "type": "string"
+        }
+      }
+    },
+    "WebServerSettings": {
+      "type": "object",
+      "properties": {
+        "portNumber": {
+          "type": "integer"
+        },
+        "clientCertificateAuthEnabled": {
+          "type": "boolean"
+        },
+        "ewsUserAuthEnabled": {
+          "type": "boolean"
+        },
+        "ewsIPAddress": {
+          "type": "string"
+        },
+        "ewsPortNumber": {
+          "type": "integer"
+        },
+        "ewsResourceId": {
           "type": "string"
         }
       }
