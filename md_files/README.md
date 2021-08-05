@@ -498,7 +498,7 @@ log-buffer (131)
 log-device-object-property (132)
 
 enable (133)
- log-enable was renamed to enable in version 1 revision 5
+
 log-interval (134)
 
 maximum-value (135)
