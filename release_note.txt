@@ -1,0 +1,5 @@
+<Release Note>
+
+# For this release
+- Value of object identifier (75) is changed from json object type to unsigned integer.
+- Value(present value (85)) of Binary Input/Outout/value object is changed from true/false to 1/0
