@@ -85,6 +85,9 @@
             "schema": {
               "$ref": "#/definitions/WebServerSettings"
             }
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -271,6 +274,9 @@
             "schema": {
               "$ref": "#/definitions/UserInfo"
             }
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -300,6 +306,9 @@
         "responses": {
           "200": {
             "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -330,6 +339,9 @@
             "schema": {
               "$ref": "#/definitions/UserInfo"
             }
+          },
+          "404": {
+            "description": "Property not found"
           }
         }
       },
@@ -367,6 +379,12 @@
             "schema": {
               "$ref": "#/definitions/UserInfo"
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Property not found"
           }
         }
       },
@@ -392,6 +410,9 @@
         "responses": {
           "200": {
             "description": "successful operation"
+          },
+          "404": {
+            "description": "Property not found"
           }
         }
       }
@@ -402,7 +423,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog Input Object \\\n1: Analog Output Object \\\n2: Analog Value Object \\\n3: Binary Input Object \\\n4: Binary Output Object \\\n5: Binary Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object",
+        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog-Input Object \\\n1: Analog-Output Object \\\n2: Analog-Value Object \\\n3: Binary-Input Object \\\n4: Binary-Output Object \\\n5: Binary-Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer-Value Object",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
@@ -441,7 +462,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.",
             "required": true,
             "type": "integer"
           }
@@ -452,9 +473,6 @@
             "schema": {
               "$ref": "#/definitions/Object"
             }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
           },
           "404": {
             "description": "Object not found"
@@ -489,9 +507,6 @@
               "$ref": "#/definitions/Properties"
             }
           },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
           "404": {
             "description": "Properties not found"
           }
@@ -513,7 +528,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.",
             "required": true,
             "type": "integer"
           },
@@ -531,9 +546,6 @@
             "schema": {
               "$ref": "#/definitions/Property"
             }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
           },
           "404": {
             "description": "Property not found"
@@ -554,7 +566,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.\\\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011\n(instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.",
             "required": true,
             "type": "integer"
           },
@@ -597,7 +609,7 @@
             }
           },
           "400": {
-            "description": "Invalid value supplied"
+            "description": "Bad Request"
           },
           "404": {
             "description": "Property not found"
