@@ -1,6 +1,6 @@
 ## Overview
 
-<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/schneider_LOGO.jpg" style="zoom:80%;" /> 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/schneider_LOGO.jpg" style="zoom:60%;" /> 
 
 
 ## API overview and usage
@@ -99,7 +99,12 @@ There are two layers of authentication to create secure connection between serve
 		
 		>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
 		
-		Convert server key and certificate to DER format to import to RP-C
+		Convert server key and certificate to DER format to import to RP-C via webserver settings API
+		
+		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
+		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
+		
+		Convert server key and certificate to pfx format to import to RP-C via Web Server Configuration Tool
 		
 		>openssl pkcs12 -export -out ./output/server.pfx -inkey server.key -in server.crt		
 	
