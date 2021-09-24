@@ -159,36 +159,36 @@ There are two layers of authentication to create secure connection between serve
 	
 - Centralized user authentication 
 
-	If you are using EcoStructure System and want user authentication from there, you need to enable **EWS Server**.
-	
-		- In WorkStation, in the **System Tree** pane, expand **System** of a server (Enterprise Server or Automation Server).
-		
-		- In the **List View**, click **Eco Structure Web Services** and **EWS Server Configuration**.
+	- If you are using EcoStructure System and want user authentication from there, you need to enable **EWS Server**.
 
-		- In the Configuration Information box, enable **EWS Server**.
-		
-		- In the **List View**, click **Security Manager**.
-		
-		- In **Web server configuration**, add **AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256** to **Cipher list**
-		
-		- Create Authentication Point for RP-C Web Server
-		
-			- Create a folder in a server (Enterprise Server or Automation Server).
-			
-			- Create a **Digital Value** object.
-			
-			- Here's example of authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
-	
+	- In WorkStation, in the **System Tree** pane, expand **System** of a server (Enterprise Server or Automation Server).
+
+	- In the **List View**, click **Eco Structure Web Services** and **EWS Server Configuration**.
+
+	- In the Configuration Information box, enable **EWS Server**.
+
+	- In the **List View**, click **Security Manager**.
+
+	- In **Web server configuration**, add **AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256** to **Cipher list**
+
+	- Create Authentication Point for RP-C Web Server
+
+		- Create a folder in a server (Enterprise Server or Automation Server).
+
+		- Create a **Digital Value** object.
+
+		- Here's example of authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
+
 			<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/AuthenticationPoint.PNG" style="zoom:100%;" /> 
-	
-			- Enable EWS authentication on RP-C using webserver settings API.
-			
-				- **ewsUserAuthEnabled** need to be true.
-				
-				- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
-				
-				- **ewsResourceId** is from authentication point.
-	
+
+		- Enable EWS authentication on RP-C using webserver settings API.
+
+			- **ewsUserAuthEnabled** need to be true.
+
+			- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
+
+			- **ewsResourceId** is from authentication point.
+
 ## Response Codes
 
 The RP Series controller Web API follows the error response format proposed in [RFC 7807](https://tools.ietf.org/html/rfc7807)also known as Problem Details for HTTP APIs.  As with our normal API responses, your client must be prepared to gracefully handle additional members of the response.
