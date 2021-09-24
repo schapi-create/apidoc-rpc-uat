@@ -1,59 +1,56 @@
 ## Overview
 
-<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
-
-
-***Note: We will create an image for RP/MP apis***
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/schneider_LOGO.jpg" style="zoom:80%;" /> 
 
 
 ## API overview and usage
 
-This document explain the usage of the **RP-C** API.
+This document explain the usage of the **RP-C** Web Service API. This Web API allows you to obtain BACnet objects and properties from the RP-C.
 
-This Web API allows you to obtain BACnet objects and properties from the RP-C.
+Please note that you need to configure Web API feature on RP-C to enable the API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
 
-Please note that you need to configure Web API feature on RP-C to use this API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
-
-***Note: need to know PSS is right place to contact more information about Web API***
-
-This document provides a general tutorial for users who want to consume the RP-C API.
+This document provides a general tutorial for users who want to consume the RP-C Web API.
 
 ## How it works
 
-By using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C. 
+Using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C via HTTPS over TCP/IP.
 
-<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/WebServiceUserScenario.png" style="zoom:50%;" /> 
+<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/WebServiceUserScenario.png" style="zoom:60%;" /> 
 
 In case of Single RP-C, 3rd party client application can access to BACnet objects and properties if user credencial is valid. User will be authenticated based on User DB in RP-C.
 
-In case of EcoStructure System with RP-C's, User will be authenticated based on centralized User DB on AS/ES.
+In case of EcoStructure System with multiple RP-C's, Users can be authenticated based on centralized User DB on SmartX Controller AS-P or Enterprise Server.
 
 # Developer Guide
 
 ## How to enable Web API on RP-C
 
-***Note: need to explain how to enable Web API on RP-C. Currently, we are working on configuration menu for Web API. This section will be updated when it is ready.***
+1.	Please update RP-C with firmware which support Web Service Feature.
 
-1.	Need to access to RP-C via WorkStation Building Operation
+2.	Configure Web Server Settings.
 
-2.	Need to configure Web API feature on RP-C. For example, enabling Web API, IP & port Settings, Security, admin user and password, and so on
+	- In WorkStation, in the **System Tree** pain, expand the RP controller.
+	
+	- Click and expand the **System** folder.
+	
+	- In the **Web Server** box, enter the address of the **Web Server configuration tool** and enable Web Server.
+	
+		- Web Server Configuration Tool need to be configured and running prior to enabling Web Server. This is required for the first setup only.
+	
+		- If you don't see the **Web Server** box, please run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**)
+		
+	- Web Server State will be **Running** if Web Server starts successfully.
 
-	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
+3.	Please update admin user name and password as soon as Web Server is enabled for security.
 
-	***Note: need to create an image or screen shot. It will be updated when it is ready.***
-
-3.	Need to import certificates and keys to RP-C and client application for authentication
-
-	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
-
-	***Note: need to create an image or screen shot. It will be updated when it is ready.***
+4.	Need to generate server certificate and key for each RP-C. Server Certificate and key can be deployed using **Web Server Configuration Tool** (First time only) or APIs in webserver settings.
 
 
 ## Limitations
 
 The number of calls to the API in the SANDBOX are limited.
 
-To fully experience and extend the thresholds, please enable the Web API on the RP-C and use the environment.
+To fully experience and extend the thresholds, please enable the Web Server on the RP-C and use the environment.
 
 ## Authentication guide
 
@@ -104,8 +101,7 @@ There are two layers of authentication to create secure connection between serve
 		
 		Convert server key and certificate to DER format to import to RP-C
 		
-		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der \
-		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
+		>openssl pkcs12 -export -out ./output/server.pfx -inkey server.key -in server.crt		
 	
 	- Client Certificate Authentication
 	
@@ -147,7 +143,7 @@ There are two layers of authentication to create secure connection between serve
 		
 		Convert root CA certificate to DER format to import to RP-C
 		
-		>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.cer
+		>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.der
 		
 		If you are using soap ui for development, you need to merge client key and certificate to pfx format.
 
@@ -163,11 +159,35 @@ There are two layers of authentication to create secure connection between serve
 	
 - Centralized user authentication 
 
-	If you have EcoStructure System and use user authentication from there, you need to enable EWS Server (Eco Structure Web Services -> EWS Server Configuration). After that, you need to configure authentication on RP Web Server.
+	If you are using EcoStructure System and want user authentication from there, you need to enable **EWS Server**.
 	
-	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/RPC.png" style="zoom:67%;" /> 
+		- In WorkStation, in the **System Tree** pane, expand **System** of a server (Enterprise Server or Automation Server).
+		
+		- In the **List View**, click **Eco Structure Web Services** and **EWS Server Configuration**.
+
+		- In the Configuration Information box, enable **EWS Server**.
+		
+		- In the **List View**, click **Security Manager**.
+		
+		- In **Web server configuration**, add **AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256** to **Cipher list**
+		
+		- Create Authentication Point for RP-C Web Server
+		
+			- Create a folder in a server (Enterprise Server or Automation Server).
+			
+			- Create a **Digital Value** object.
+			
+			- Here's example of authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
 	
-	***Note: need to create an image or screen shot. It will be updated when it is ready.***
+			<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/AuthenticationPoint.PNG" style="zoom:100%;" /> 
+	
+			- Enable EWS authentication on RP-C using webserver settings API.
+			
+				- **ewsUserAuthEnabled** need to be true.
+				
+				- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
+				
+				- **ewsResourceId** is from authentication point.
 	
 ## Response Codes
 
