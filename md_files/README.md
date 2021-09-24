@@ -268,11 +268,11 @@ ComplianceRelated
 This method has been disabled.
 
 ## BACnet Property Identifier
-acked-transitions (0)
-ack-required (1)
-action (2)
-action-text (3)
-active-text (4)
+acked-transitions (0) \
+ack-required (1) \
+action (2) \
+action-text (3) \
+active-text (4) \
 active-vt-sessions (5)
 alarm-value (6)
 alarm-values (7)
