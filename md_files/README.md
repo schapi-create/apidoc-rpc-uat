@@ -182,13 +182,13 @@ There are two layers of authentication to create secure connection between serve
 
 			<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/AuthenticationPoint.PNG" style="zoom:80%;" /> 
 
-		- Enable EWS authentication on RP-C using webserver settings API.
+	- Enable EWS authentication on RP-C using webserver settings API.
 
-			- **ewsUserAuthEnabled** need to be true.
+		- **ewsUserAuthEnabled** need to be true.
 
-			- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
+		- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
 
-			- **ewsResourceId** is from authentication point.
+		- **ewsResourceId** is from authentication point.
 
 ## Response Codes
 
