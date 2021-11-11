@@ -462,7 +462,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.",
+            "description": "objectId is combination of object type and instance number.\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
             "type": "integer"
           }
@@ -495,7 +495,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.  For example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
+            "description": "objectId is combination of object type and instance number.\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
             "type": "integer"
           }
@@ -528,7 +528,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.",
+            "description": "objectId is combination of object type and instance number.\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
             "type": "integer"
           },
@@ -566,7 +566,7 @@
           {
             "name": "objectId",
             "in": "path",
-            "description": "objectId is combination of object type and instance number.",
+            "description": "objectId is combination of object type and instance number.\nFor example, 00000000 01 (object type: 1) / 000000 00000000 00001011 (instance Number: 11)",
             "required": true,
             "type": "integer"
           },
@@ -623,13 +623,16 @@
       "type": "object",
       "properties": {
         "access_token": {
-          "type": "string"
+          "type": "string",
+          "default": "eyJh..."
         },
         "token_type": {
-          "type": "string"
+          "type": "string",
+          "default": "bearer"
         },
         "expires_in": {
-          "type": "integer"
+          "type": "integer",
+          "description": "unit is second"
         }
       }
     },
@@ -657,7 +660,8 @@
           "type": "string"
         },
         "objectName": {
-          "type": "string"
+          "type": "string",
+          "description": "It is BACnet name in EBO."
         }
       }
     },
@@ -676,7 +680,8 @@
       "type": "object",
       "properties": {
         "propertyId": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Please find this value from Developer Guide - BACnet Property Identifier"
         },
         "anyOfValue": {
           "type": "array",
@@ -895,13 +900,16 @@
       "type": "object",
       "properties": {
         "portNumber": {
-          "type": "integer"
+          "type": "integer",
+          "default": 443
         },
         "clientCertificateAuthEnabled": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "ewsUserAuthEnabled": {
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "ewsIPAddress": {
           "type": "string"
@@ -968,10 +976,12 @@
       "type": "object",
       "properties": {
         "adminName": {
-          "type": "string"
+          "type": "string",
+          "default": "admin"
         },
         "adminPassword": {
-          "type": "string"
+          "type": "string",
+          "default": "password"
         }
       }
     }
