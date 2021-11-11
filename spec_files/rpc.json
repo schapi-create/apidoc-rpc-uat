@@ -44,7 +44,7 @@
           "webserver settings"
         ],
         "summary": "Getting web server settings",
-        "description": "Web Server Settings will be returned.\\\nThis API will be available for admin user only.",
+        "description": "Web Server Settings will be returned.\\\n**This API will be available for admin user only.**",
         "operationId": "gettingwebserversettings",
         "produces": [
           "application/json"
@@ -63,7 +63,7 @@
           "webserver settings"
         ],
         "summary": "Update web server settings",
-        "description": "Updating web server settings.\\\nThis API will be available for admin user only.",
+        "description": "Updating web server settings.\\\n**This API will be available for admin user only.**",
         "operationId": "updatewebserversettings",
         "parameters": [
           {
@@ -98,7 +98,7 @@
           "webserver settings"
         ],
         "summary": "posting a new certificate to Server",
-        "description": "Setting a new server certificate.\\\nThis API will be available for admin user only.",
+        "description": "Setting a new server certificate.\\\n**This API will be available for admin user only.**",
         "operationId": "servercert",
         "consumes": [
           "application/octet-stream"
@@ -131,7 +131,7 @@
           "webserver settings"
         ],
         "summary": "posting a new private key to Server",
-        "description": "Setting a new server private key.\\\nThis API will be available for admin user only.",
+        "description": "Setting a new server private key.\\\n**This API will be available for admin user only.**",
         "operationId": "serverprivatekey",
         "consumes": [
           "application/octet-stream"
@@ -164,7 +164,7 @@
           "webserver settings"
         ],
         "summary": "posting a new client CA certificate to Server",
-        "description": "Setting a new client CA certificate.\\\nThis API will be available for admin user only.",
+        "description": "Setting a new client CA certificate.\\\n**This API will be available for admin user only.**",
         "operationId": "clientcacert",
         "consumes": [
           "application/octet-stream"
@@ -197,7 +197,7 @@
           "webserver settings"
         ],
         "summary": "trying new certs",
-        "description": "Trying new certs by restarting web server.\\\nIf you reboot your device or restart web server without storing it, new certs will be discarded.\\\nThis API will be available for admin user only.",
+        "description": "Trying new certs by restarting web server.\\\nIf you reboot your device or restart web server without storing it, new certs will be discarded.\\\n**This API will be available for admin user only.**",
         "operationId": "trynewcert",
         "produces": [
           "application/json"
@@ -215,7 +215,7 @@
           "webserver settings"
         ],
         "summary": "Storing certs",
-        "description": "Storing Certs running on a system currently.\\\nThis api should be called after /trynewcerts api to store new certificates.\\\nThis API will be available for admin user only.",
+        "description": "Storing Certs running on a system currently.\\\nThis api should be called after /trynewcerts api to store new certificates.\\\n**This API will be available for admin user only.**",
         "operationId": "storecerts",
         "produces": [
           "application/json"
@@ -233,7 +233,7 @@
           "user management"
         ],
         "summary": "Getting a list of user Ids",
-        "description": "A list of user Ids will be returned.\\\nThis API will be available for admin user only.",
+        "description": "A list of user Ids will be returned.\\\n**This API will be available for admin user only.**",
         "operationId": "gettingusers",
         "produces": [
           "application/json"
@@ -252,7 +252,7 @@
           "user management"
         ],
         "summary": "Createing a user account",
-        "description": "A user account will be created.\\\nThis API will be available for admin user only.\\\n\nUser name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
+        "description": "A user account will be created.\\\n**This API will be available for admin user only.**\\\nUser name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "creatinguser",
         "parameters": [
           {
@@ -287,7 +287,7 @@
           "user management"
         ],
         "summary": "Update admin user",
-        "description": "Updating admin user information.\\\nThis API will be available for admin user only.\\\n\nAdmin name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
+        "description": "Updating admin user information.\\\n**This API will be available for admin user only.**\\\nAdmin name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "updateadmin",
         "parameters": [
           {
@@ -319,7 +319,7 @@
           "user management"
         ],
         "summary": "Getting user information",
-        "description": "User information will be returned.\\\nThis API will be available for admin user only.",
+        "description": "User information will be returned.\\\n**This API will be available for admin user only.**",
         "operationId": "gettinguser",
         "parameters": [
           {
@@ -350,7 +350,7 @@
           "user management"
         ],
         "summary": "updating a user information",
-        "description": "User information will be updated.\\\nThis API will be available for admin user only.",
+        "description": "User information will be updated.\\\n**This API will be available for admin user only.**",
         "operationId": "updateuser",
         "parameters": [
           {
@@ -393,7 +393,7 @@
           "user management"
         ],
         "summary": "Deleting user account",
-        "description": "User information will be returned.\\\nThis API will be available for admin user only.",
+        "description": "User information will be returned.\\\n**This API will be available for admin user only.**",
         "operationId": "deleteuser",
         "parameters": [
           {
