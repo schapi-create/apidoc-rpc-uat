@@ -27,30 +27,30 @@ In case of EcoStructure System with multiple RP-C's, Users can be authenticated 
 
 1.	Please update RP-C with firmware which support Web Service Feature.
 
-2.	Configure Web Server Settings.
+2.	Configure Web Service Settings.
 
 	- In WorkStation, in the **System Tree** pain, expand the RP controller.
 	
 	- Click and expand the **System** folder.
 	
-	- In the **Web Server** box, enter the address of the **Web Server configuration tool** and enable Web Server.
+	- In the **Web Service** box, enter the address of the **Web Service configuration tool** and enable Web Service.
 	
-		- Web Server Configuration Tool need to be configured and running prior to enabling Web Server. This is required for the first setup only.
+		- Web Service Configuration Tool need to be configured and running prior to enabling Web Service. This is required for the first setup only.
 	
-		- If you don't see the **Web Server** box, please run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**)
+		- If you don't see the **Web Service** box, please run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**)
 		
-	- Web Server State will be **Running** if Web Server starts successfully.
+	- Web Service State will be **Running** if Web Service starts successfully.
 
-3.	Please update admin user name and password as soon as Web Server is enabled for security.
+3.	Please update admin user name and password as soon as Web Service is enabled for security.
 
-4.	Need to generate server certificate and key for each RP-C. Server Certificate and key can be deployed using **Web Server Configuration Tool** (First time only) or APIs in webserver settings.
+4.	Need to generate Service certificate and key for each RP-C. Service Certificate and key can be deployed using **Web Service (Certificate) Configuration Tool** (First time only) or APIs in webserver settings.
 
 
 ## Limitations
 
 The number of calls to the API in the SANDBOX are limited.
 
-To fully experience and extend the thresholds, please enable the Web Server on the RP-C and use the environment.
+To fully experience and extend the thresholds, please enable the Web Service on the RP-C and use the environment.
 
 ## Authentication guide
 
@@ -104,11 +104,11 @@ There are two layers of authentication to create secure connection between serve
 		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
 		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 		
-		Convert server key and certificate to pfx format to import to RP-C via Web Server Configuration Tool
+		Convert server key and certificate to pfx format to import to RP-C via Web Service Configuration Tool
 		
 		>openssl pkcs12 -export -out ./output/server.pfx -inkey server.key -in server.crt		
 	
-	- Client Certificate Authentication
+	- Client Certificate Authentication (Optional)
 	
 		Server can authenticate a client using Certificate. You can also create self-signed certificates to set this up.
 		
@@ -172,7 +172,7 @@ There are two layers of authentication to create secure connection between serve
 
 	- In the Configuration Information box, enable **EWS Server**.
 
-	- Create Authentication Point for RP-C Web Server
+	- Create Authentication Point for RP-C Web Service
 
 		- Create a folder in a server (Enterprise Server or Automation Server).
 
