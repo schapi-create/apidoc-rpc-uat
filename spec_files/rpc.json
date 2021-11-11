@@ -513,7 +513,7 @@
         }
       }
     },
-    "/v1/protocols/bacnet/local/objects/{objectId}/properties/{propertId}": {
+    "/v1/protocols/bacnet/local/objects/{objectId}/properties/{propertyId}": {
       "get": {
         "tags": [
           "local object"
@@ -533,9 +533,9 @@
             "type": "integer"
           },
           {
-            "name": "propertId",
+            "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier",
+            "description": "unique property identifier, please find more information from Developer Guide - BACnet Property Identifier",
             "required": true,
             "type": "integer"
           }
@@ -571,9 +571,9 @@
             "type": "integer"
           },
           {
-            "name": "propertId",
+            "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier",
+            "description": "unique property identifier, please find more information from Developer Guide - BACnet Property Identifier",
             "required": true,
             "type": "integer"
           },
@@ -681,7 +681,7 @@
       "properties": {
         "propertyId": {
           "type": "integer",
-          "description": "Please find this value from Developer Guide - BACnet Property Identifier"
+          "description": "Please find more information from Developer Guide - BACnet Property Identifier"
         },
         "anyOfValue": {
           "type": "array",
