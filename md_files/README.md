@@ -172,10 +172,6 @@ There are two layers of authentication to create secure connection between serve
 
 	- In the Configuration Information box, enable **EWS Server**.
 
-	- In the **List View**, click **Security Manager**.
-
-	- In **Web server configuration**, add **AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256** to **Cipher list**
-
 	- Create Authentication Point for RP-C Web Server
 
 		- Create a folder in a server (Enterprise Server or Automation Server).
