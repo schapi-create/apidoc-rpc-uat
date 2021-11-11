@@ -594,7 +594,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Provide value anyValueOf based on property type",
+            "description": "Provide value anyOfValue based on property type",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PropertyRaram"
@@ -678,7 +678,7 @@
         "propertyId": {
           "type": "integer"
         },
-        "anyValueOf": {
+        "anyOfValue": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/IntValue"
@@ -723,7 +723,7 @@
     "PropertyRaram": {
       "type": "object",
       "properties": {
-        "anyValueOf": {
+        "anyOfValue": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/IntValue"
