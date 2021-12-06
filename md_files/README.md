@@ -19,7 +19,7 @@ Using this API, a Schneider Electric partner can remotely access BACnet objects 
 
 In case of Single RP-C, 3rd party client application can access to BACnet objects and properties if user credencial is valid. User will be authenticated based on User DB in RP-C.
 
-In case of EcoStructure System with multiple RP-C's, Users can be authenticated based on centralized User DB on SmartX Controller AS-P or Enterprise Server.
+In case of EcoStructure System with multiple RP-C's, users can be authenticated based on centralized User DB on SpaceLogic RP-X Controller, AS-P or Enterprise Server.
 
 # Developer Guide
 
