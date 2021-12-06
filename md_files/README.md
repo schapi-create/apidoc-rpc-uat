@@ -48,7 +48,9 @@ In case of EcoStructure System with multiple RP-C's, users can be authenticated 
 
 ## Limitations
 
-The number of calls to the API in the SANDBOX are limited.
+The number of calls to the API in the SandBox could be limited.
+
+The API in the SandBox will return simulated data based on [RP-33](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
 
 To fully experience and extend the thresholds, please enable the Web Service on the RP-C and use the environment.
 
@@ -722,12 +724,13 @@ represents (491)
 
 # Support
 
----
+Contact the Exchange support team at exchange.support@se.com.
 
-# Blogs
-
----
 
 # Authentication
 
----
+If client certificate authentication is enabled, client need to have a vaild client certificate to be authenticated.
+
+Local user authentication or EWS(Centralized) user authentication is required based on Web Service settting.
+
+Token based user authentication is available to protect user password. Basic authentication is required to get a access token.
