@@ -9,7 +9,7 @@
   },
   "x-servers": [
     {
-      "url": "https://se-exchange-uat-sandbox.apigee.net/rpc",
+      "url": "https://sandboxrpdev.azurewebsites.net",
       "description": "Sandbox"
     }
   ],
