@@ -686,7 +686,7 @@
         "anyOfValue": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IntValue"
+            "$ref": "#/definitions/AnyValue"
           },
           "example": [
             {
@@ -731,7 +731,7 @@
         "anyOfValue": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/IntValue"
+            "$ref": "#/definitions/AnyValue"
           },
           "example": [
             {
@@ -743,7 +743,7 @@
         }
       }
     },
-    "IntValue": {
+    "AnyValue": {
       "type": "object",
       "properties": {
         "type": {
@@ -753,6 +753,7 @@
           "type": "boolean"
         },
         "value": {
+          "description": "type of the value can be integer, float, integer or anything based on type of BACnet property value.",
           "type": "integer"
         }
       }
