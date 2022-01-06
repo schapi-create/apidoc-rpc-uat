@@ -4,7 +4,7 @@
     "description": {
       "$ref": "../md_files/README.md"
     },
-    "version": "v0.2.2",
+    "version": "v0.2.3",
     "title": "SpaceLogic RP-X Controller - Web API"
   },
   "x-servers": [
@@ -423,7 +423,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog-Input Object \\\n1: Analog-Output Object \\\n2: Analog-Value Object \\\n3: Binary-Input Object \\\n4: Binary-Output Object \\\n5: Binary-Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer-Value Object",
+        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog-Input Object \\\n1: Analog-Output Object \\\n2: Analog-Value Object \\\n3: Binary-Input Object \\\n4: Binary-Output Object \\\n5: Binary-Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer-Value Object\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
@@ -453,7 +453,7 @@
           "local object"
         ],
         "summary": "Find BACnet object by ID",
-        "description": "Returns a single object",
+        "description": "Returns a single object.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
         "operationId": "getObjectById",
         "produces": [
           "application/json"
@@ -486,7 +486,7 @@
           "local object"
         ],
         "summary": "Getting Property List",
-        "description": "A list of propertyIDs that exist on the object will be\nreturned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.",
+        "description": "A list of propertyIDs that exist on the object will be\nreturned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
         "operationId": "getObjectPropertiesById",
         "produces": [
           "application/json"
@@ -519,7 +519,7 @@
           "local object"
         ],
         "summary": "Find BACnet property by ID",
-        "description": "Returns a single property",
+        "description": "Returns a single property\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
         "operationId": "getPropertyById",
         "produces": [
           "application/json"
@@ -557,7 +557,7 @@
           "local object"
         ],
         "summary": "Updated value of property",
-        "description": "Update value of property and return it.",
+        "description": "Update value of property and return it.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
         "operationId": "updatePropertyValue",
         "produces": [
           "application/json"
@@ -594,7 +594,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "Provide value anyOfValue based on property type",
+            "description": "Provide value in anyOfValue object based on property type. Before you make a request, you need to check type of the property value, such as \"integer\", \"boolean\", \"string\" and so on.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PropertyRaram"
@@ -735,33 +735,9 @@
           },
           "example": [
             {
-              "type": "boolean",
-              "isArray": false,
-              "value": true
-            },
-            {
-              "type": "integer",
-              "isArray": false,
-              "value": 0
-            },
-            {
-              "type": "string",
-              "isArray": false,
-              "value": "string"
-            },
-            {
               "type": "float",
               "isArray": false,
               "value": 1.2
-            },
-            {
-              "type": "integer",
-              "isArray": true,
-              "value": [
-                1,
-                2,
-                3
-              ]
             }
           ]
         }
