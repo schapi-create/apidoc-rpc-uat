@@ -5,21 +5,21 @@
 
 ## API overview and usage
 
-This document explain the usage of the **RP-C** Web Service API. This Web API allows you to obtain BACnet objects and properties from the RP-C.
+This document explain the usage of the **RP-C** Web Service API. This Web Service API allows you to obtain BACnet objects and properties from the RP-C.
 
 Please note that you need to configure Web API feature on RP-C to enable the API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
 
-This document provides a general tutorial for users who want to consume the RP-C Web API.
+This document provides a general tutorial for users who want to consume the RP-C Web Service API.
 
 ## How it works
 
-Using this API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C via HTTPS over TCP/IP.
+Using Web Service API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C. RP-C will return a list of object ids available and a list of property ids for a specific object.
 
 <img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/WebServiceUserScenario.png" style="zoom:60%;" /> 
 
 In case of Single RP-C, 3rd party client application can access to BACnet objects and properties if user credencial is valid. User will be authenticated based on User DB in RP-C.
 
-In case of EcoStructure System with multiple RP-C's, users can be authenticated based on centralized User DB on SpaceLogic RP-X Controller, AS-P or Enterprise Server.
+In case of EcoStructure System with multiple RP-C's, users can be authenticated based on centralized User DB on SpaceLogic RP-X Controller, AS-P or Enterprise Server by configuring Web Service Settings.
 
 # Developer Guide
 
@@ -50,7 +50,9 @@ In case of EcoStructure System with multiple RP-C's, users can be authenticated 
 
 The number of calls to the API in the SandBox could be limited.
 
-The API in the SandBox will return simulated data based on [RP-33](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
+The SandBox application for this API document will return BACnet object data based on [RP-33 FCU.A01.194_2c](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
+
+Since there is a single instance of data base in the Sandbox application, you may get values updated by other users. The single instance of data base will be reset after timeout without any incoming requests.
 
 To fully experience and extend the thresholds, please enable the Web Service on the RP-C and use the environment.
 
