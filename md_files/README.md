@@ -722,6 +722,9 @@ subordinate-relationships (489) \
 default-subordinate-relationship (490) \
 represents (491)
 
+In case of proprietary properties, please refer to [RP-C PICS Protocol document](https://www.bacnetinternational.net/catalog/manu/schneider%20electric/EcoStruxure%20RP-C%20PICS_Protocol%20Rev%2014_April26_2019_FINAL.pdf)
+
+
 # Support
 
 Contact the Exchange support team at exchange.support@se.com.
