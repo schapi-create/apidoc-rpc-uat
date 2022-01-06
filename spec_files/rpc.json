@@ -753,7 +753,7 @@
           "type": "boolean"
         },
         "value": {
-          "description": "type of the value can be integer, float, integer or anything based on type of BACnet property value.",
+          "description": "type of the value can be integer, float, boolean or anything based on type of BACnet property value.",
           "type": "integer"
         }
       }
