@@ -251,7 +251,7 @@
         "tags": [
           "user management"
         ],
-        "summary": "Createing a user account",
+        "summary": "Creating a user account",
         "description": "A user account will be created.\\\n**This API will be available for admin user only.**\\\nUser name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "creatinguser",
         "parameters": [
