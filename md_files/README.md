@@ -58,7 +58,7 @@ To fully experience and extend the thresholds, please enable the Web Service on 
 
 ## Authentication guide
 
-There are two layers of authentication to create secure connection between server and client.
+There are two layers of authentication to create secure connection between server and client. First one is based on Digital Certificate, and the other is based on user (Local or Central).
 
 - Server Certificate Validation and Client Certificate Authentication
 	
@@ -158,7 +158,7 @@ There are two layers of authentication to create secure connection between serve
 
 		>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
-- Token based user authentication 
+- Token based user authentication (Local and Centralized)
 
 	Token-based authentication is a process where the client application first send a request to server with a valid credencials. The server send an Access Token back to the client as response. The client application then use the token to acess the restricted resources in the next request until the token is valid.
 	
@@ -739,3 +739,5 @@ If client certificate authentication is enabled, client need to have a vaild cli
 Local user authentication or EWS(Centralized) user authentication is required based on Web Service settting.
 
 Token based user authentication is available to protect user password. Basic authentication is required to get a access token.
+
+For more information, please refer to Developer Guide > Authentication Guide in this document.
