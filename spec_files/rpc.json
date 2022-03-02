@@ -22,8 +22,8 @@
         "tags": [
           "token"
         ],
-        "summary": "Creating Token",
-        "description": "A web token will be created and returned. The Client application then uses the token to access APIs in the next request until the token is valid.",
+        "summary": "Creating a Token",
+        "description": "A web token is created and returned. The Client application then uses the token to access APIs in the next request until the token is valid.",
         "operationId": "gettingtoken",
         "produces": [
           "application/json"
@@ -41,10 +41,10 @@
     "/v1/system/settings/webserver": {
       "get": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
         "summary": "Getting web server settings",
-        "description": "Web Server Settings will be returned.\\\n**This API will be available for admin user only.**",
+        "description": "Web Server Settings are returned.\\\n**This API is available for admin user only.**",
         "operationId": "gettingwebserversettings",
         "produces": [
           "application/json"
@@ -60,10 +60,10 @@
       },
       "put": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
         "summary": "Update web server settings",
-        "description": "Updating web server settings.\\\n**This API will be available for admin user only.**",
+        "description": "Web server settings are updated.\\\n**This API is available for admin user only.**",
         "operationId": "updatewebserversettings",
         "parameters": [
           {
@@ -95,10 +95,10 @@
     "/v1/system/settings/webserver/certificate/servercert": {
       "post": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
-        "summary": "posting a new certificate to Server",
-        "description": "Setting a new server certificate.\\\n**This API will be available for admin user only.**",
+        "summary": "upload a new certificate to the server",
+        "description": "A new server certificate is uploaded\\\n**This API is available for admin user only.**",
         "operationId": "servercert",
         "consumes": [
           "application/octet-stream"
@@ -128,10 +128,10 @@
     "/v1/system/settings/webserver/certificate/serverprivatekey": {
       "post": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
-        "summary": "posting a new private key to Server",
-        "description": "Setting a new server private key.\\\n**This API will be available for admin user only.**",
+        "summary": "upload a new private key to the server",
+        "description": "A new server private key is uploaded.\\\n**This API is available for admin user only.**",
         "operationId": "serverprivatekey",
         "consumes": [
           "application/octet-stream"
@@ -161,10 +161,10 @@
     "/v1/system/settings/webserver/certificate/clientcacert": {
       "post": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
-        "summary": "posting a new client CA certificate to Server",
-        "description": "Setting a new client CA certificate.\\\n**This API will be available for admin user only.**",
+        "summary": "upload a new client CA certificate to the server",
+        "description": "A new client CA certificate is uploaded.\\\n**This API is available for admin user only.**",
         "operationId": "clientcacert",
         "consumes": [
           "application/octet-stream"
@@ -194,10 +194,10 @@
     "/v1/system/settings/webserver/certificate/trynewcerts": {
       "post": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
         "summary": "trying new certs",
-        "description": "Trying new certs by restarting web server.\\\nIf you reboot your device or restart web server without storing it, new certs will be discarded.\\\n**This API will be available for admin user only.**",
+        "description": "New certificates are tried by restarting the web server.\\\nIf you reboot your device or restart the web server without storing it, new certs will be discarded.\\\n**This API is available for admin user only.**",
         "operationId": "trynewcert",
         "produces": [
           "application/json"
@@ -212,10 +212,10 @@
     "/v1/system/settings/webserver/certificate/storecerts": {
       "post": {
         "tags": [
-          "webserver settings"
+          "web server settings"
         ],
         "summary": "Storing certs",
-        "description": "Storing Certs running on a system currently.\\\nThis api should be called after /trynewcerts api to store new certificates.\\\n**This API will be available for admin user only.**",
+        "description": "The certificates running on a system currently are stored\\\nThis api should be called after trynewcerts API to store new certificates.\\\n**This API is available for admin user only.**",
         "operationId": "storecerts",
         "produces": [
           "application/json"
@@ -233,7 +233,7 @@
           "user management"
         ],
         "summary": "Getting a list of user Ids",
-        "description": "A list of user Ids will be returned.\\\n**This API will be available for admin user only.**",
+        "description": "A list of user Ids is returned.\\\n**This API is available for admin user only.**",
         "operationId": "gettingusers",
         "produces": [
           "application/json"
@@ -252,7 +252,7 @@
           "user management"
         ],
         "summary": "Creating a user account",
-        "description": "A user account will be created.\\\n**This API will be available for admin user only.**\\\nUser name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
+        "description": "A user account is created.\\\n**This API is available for admin user only.**\\\nThe user name and password policy is as follow,\n- Maximum length of a user name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "creatinguser",
         "parameters": [
           {
@@ -287,7 +287,7 @@
           "user management"
         ],
         "summary": "Update admin user",
-        "description": "Updating admin user information.\\\n**This API will be available for admin user only.**\\\nAdmin name and password policy\n- Maximum length of User name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
+        "description": "Admin user information is updated.\\\n**This API is available for admin user only.**\\\nThe admin name and password policy is as follow,\n- Maximum length of a user name is 20.\n- User password must be between 8 and 20 characters.\n- User password must contain at least one uppercase, or capital, letter (ex: A, B, etc.)\n- User password must contain at least one lowercase letter.\n- User password must contain at least one number digit (ex: 0, 1, 2, 3, etc.)\n- User password must contain at least one special character -for example: $, #, @, !,%,^,&,*,(,)",
         "operationId": "updateadmin",
         "parameters": [
           {
@@ -319,7 +319,7 @@
           "user management"
         ],
         "summary": "Getting user information",
-        "description": "User information will be returned.\\\n**This API will be available for admin user only.**",
+        "description": "User information is returned.\\\n**This API is available for admin user only.**",
         "operationId": "gettinguser",
         "parameters": [
           {
@@ -350,7 +350,7 @@
           "user management"
         ],
         "summary": "updating a user information",
-        "description": "User information will be updated.\\\n**This API will be available for admin user only.**",
+        "description": "User information is updated.\\\n**This API is available for admin user only.**",
         "operationId": "updateuser",
         "parameters": [
           {
@@ -393,7 +393,7 @@
           "user management"
         ],
         "summary": "Deleting user account",
-        "description": "User information will be returned.\\\n**This API will be available for admin user only.**",
+        "description": "User information is deleted.\\\n**This API is available for admin user only.**",
         "operationId": "deleteuser",
         "parameters": [
           {
@@ -423,7 +423,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of objectIds that are accessible via the APIs will be returned.  \nHere's a list of object types available.\\\n0: Analog-Input Object \\\n1: Analog-Output Object \\\n2: Analog-Value Object \\\n3: Binary-Input Object \\\n4: Binary-Output Object \\\n5: Binary-Value Object \\\n13: Multi-state Input Object \\\n14: Multi-state Output Object \\\n19: Multi-state Value Object \\\n45: Integer-Value Object\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
+        "description": "A list of object Ids that are accessible via the APIs.  \nHere's a list of object types available.\n- 0: Analog-Input Object\n- 1: Analog-Output Object\n- 2: Analog-Value Object\n- 3: Binary-Input Object\n- 4: Binary-Output Object\n- 5: Binary-Value Object\n- 13: Multi-state Input Object\n- 14: Multi-state Output Object\n- 19: Multi-state Value Object\n- 45: Integer-Value Object\n\nThe Sandbox application for this API document return BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
@@ -453,7 +453,7 @@
           "local object"
         ],
         "summary": "Find BACnet object by ID",
-        "description": "Returns a single object.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
+        "description": "A single object is returned.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
         "operationId": "getObjectById",
         "produces": [
           "application/json"
@@ -486,7 +486,7 @@
           "local object"
         ],
         "summary": "Getting Property List",
-        "description": "A list of propertyIDs that exist on the object will be\nreturned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
+        "description": "A list of propertyIDs that exist on the object is returned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
         "operationId": "getObjectPropertiesById",
         "produces": [
           "application/json"
@@ -519,7 +519,7 @@
           "local object"
         ],
         "summary": "Find BACnet property by ID",
-        "description": "Returns a single property\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
+        "description": "A single property is returned\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
         "operationId": "getPropertyById",
         "produces": [
           "application/json"
@@ -535,7 +535,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier, please find more information from Developer Guide - BACnet Property Identifier",
+            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in the document.",
             "required": true,
             "type": "integer"
           }
@@ -557,7 +557,7 @@
           "local object"
         ],
         "summary": "Updated value of property",
-        "description": "Update value of property and return it.\n\nThe SandBox application for this API document will return BACnet object data based on RP-33 BMS application. For more information, please refer to Developer Guide > Limitations in this document.",
+        "description": "The property value is updated and returned\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
         "operationId": "updatePropertyValue",
         "produces": [
           "application/json"
@@ -573,28 +573,28 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier, please find more information from Developer Guide - BACnet Property Identifier",
+            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in the document.",
             "required": true,
             "type": "integer"
           },
           {
             "name": "index",
             "in": "query",
-            "description": "This is optional. It can be used to update a value in array.",
+            "description": "This is optional. It can be used to update a value in an array.",
             "required": false,
             "type": "integer"
           },
           {
             "name": "priorityIndex",
             "in": "query",
-            "description": "This is optional. This will be used to update priority array via\npresent value",
+            "description": "This is optional. It can be used to update a priority array via the present value",
             "required": false,
             "type": "integer"
           },
           {
             "in": "body",
             "name": "body",
-            "description": "Provide value in anyOfValue object based on property type. Before you make a request, you need to check type of the property value, such as \"integer\", \"boolean\", \"string\" and so on.",
+            "description": "Provided a value in anyOfValue object based on the property type. Before you make a request, you need to check the type of the property value, such as \"integer\", \"boolean\", \"string\" and so on.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/PropertyRaram"
