@@ -4,8 +4,8 @@
     "description": {
       "$ref": "../md_files/README.md"
     },
-    "version": "v0.2.3",
-    "title": "SpaceLogic RP-X Controller - Web API"
+    "version": "v1.0",
+    "title": "RP Controller - Web API"
   },
   "x-servers": [
     {
@@ -964,7 +964,7 @@
     }
   },
   "externalDocs": {
-    "description": "Find out more about the RP-C",
-    "url": "https://www.se.com/us/en/download/document/03-30017/"
+    "description": "Find out more about the RP Controller",
+    "url": "https://www.se.com/ww/en/product-range/66378-spacelogic-rpc-controller/"
   }
 }

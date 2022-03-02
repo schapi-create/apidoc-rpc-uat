@@ -5,74 +5,73 @@
 
 ## API overview and usage
 
-This document explain the usage of the **RP-C** Web Service API. This Web Service API allows you to obtain BACnet objects and properties from the RP-C.
+This document explain how to use the **RP-C** Web Service API. It provides a general tutorial for users who want to consume the RP-C Web Service API and obtain BACnet objects and properties from the RP-C.
 
-Please note that you need to configure Web API feature on RP-C to enable the API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
+Please note that you need to configure the Web API feature on RP-C to enable the API. Contact the Schneider Electric Product Support Services (PSS) team for more information.
 
-This document provides a general tutorial for users who want to consume the RP-C Web Service API.
 
 ## How it works
 
-Using Web Service API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C. RP-C will return a list of object ids available and a list of property ids for a specific object.
+Using the Web Service API, a Schneider Electric partner can remotely access BACnet objects and properties on the RP-C. RP-C will return a list of object ids available and a list of property ids for a specific object.
 
 <img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/WebServiceUserScenario.png" style="zoom:60%;" /> 
 
-In case of Single RP-C, 3rd party client application can access to BACnet objects and properties if user credencial is valid. User will be authenticated based on User DB in RP-C.
+In case of a single RP-C, a 3rd party client application can access BACnet objects and properties if the user credential is valid. The user will be authenticated based on User DB in RP-C.
 
-In case of EcoStructure System with multiple RP-C's, users can be authenticated based on centralized User DB on SpaceLogic RP-X Controller, AS-P or Enterprise Server by configuring Web Service Settings.
+In case of an EcoStructure System with multiple RP-Cs, users can be authenticated based on centralized User DB on the RP Controller, AS-P or Enterprise Server by configuring Web Service Settings.
 
 # Developer Guide
 
-## How to enable Web API on RP-C
+## How to enable the Web API on RP-C
 
-1.	Please update RP-C with firmware which support Web Service Feature.
+1.	Please update the RP-C with firmware which supports Web Service Feature.
 
 2.	Configure Web Service Settings.
 
-	- In WorkStation, in the **System Tree** pain, expand the RP controller.
+	- In WorkStation, in the **System Tree** pane, expand the RP controller.
 	
 	- Click and expand the **System** folder.
 	
-	- In the **Web Service** box, enter the address of the **Web Service configuration tool** and enable Web Service.
+	- In the **Web Service** box, enter the address of the **Web Service configuration tool** and enable the Web Service.
 	
-		- Web Service Configuration Tool need to be configured and running prior to enabling Web Service. This is required for the first setup only.
+		- Ensure that Web Service Configuration Tool with configuration of the RP-C needs to be running prior to enabling Web Service. This is required for the first setup only.
 	
-		- If you don't see the **Web Service** box, please run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**)
+		- Run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**), if you don't see the Web Service box.
 		
-	- Web Service State will be **Running** if Web Service starts successfully.
+	- The Web Service State will be **Running** if Web Service starts successfully.
 
-3.	Please update admin user name and password as soon as Web Service is enabled for security.
+3.	Update admin user name and password as soon as the Web Service is enabled for security.
 
-4.	Need to generate Service certificate and key for each RP-C. Service Certificate and key can be deployed using **Web Service (Certificate) Configuration Tool** (First time only) or APIs in webserver settings.
+4.	Generate the mandatory Service certificate and key for each RP-C. You can deploy the Service Certificate and key can be deployed using the **SpaceLogic Certificate Configuration Tool** (First time only) or APIs in web server settings.
 
 
 ## Limitations
 
-The number of calls to the API in the SandBox could be limited.
+The number of calls to the API in the Sandbox could be limited.
 
-The SandBox application for this API document will return BACnet object data based on [RP-33 FCU.A01.194_2c](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
+The Sandbox application for this API document will return BACnet object data based on [RP-33 FCU.A01.194_2c](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
 
-Since there is a single instance of data base in the Sandbox application, you may get values updated by other users. The single instance of data base will be reset after timeout without any incoming requests.
+Because there is a single instance of a database in the Sandbox application, you may get values updated by other users. The single instance of a database will be reset after a timeout without any incoming requests.
 
-To fully experience and extend the thresholds, please enable the Web Service on the RP-C and use the environment.
+To fully experience and extend the thresholds, enable the Web Service on the RP-C and use the environment.
 
 ## Authentication guide
 
-There are two layers of authentication to create secure connection between server and client. First one is based on Digital Certificate, and the other is based on user (Local or Central).
+There are two layers of authentication when creating secure connection between the server and a client. The first one is based on a Digital Certificate, and the other is based on a user database (Local or Central).
 
 - Server Certificate Validation and Client Certificate Authentication
 	
 	- Server Certificate Validation
 	
-		To protect https client, server need to return certificate to client. Client should be able to validate identity and ownership of certificate from server using CA Certificate.
+		To protect a https client, a server need to return certificate to the client. The client should be able to validate identity and ownership of certificate from the server using CA Certificate.
 		
 		You can create self-signed certificates to set this up.
 		
-		First of all, Generate root key. To protect your key, please set up pass phrase.
+		First of all, generate root key. To protect your key, please set up a passphrase.
 		
 		>openssl genrsa -des3 -out rootCA.key 2048
 		
-		Then, generate a root certificate. You need to fill out a list of information.
+		Then, generate a root certificate. You need to enter a list of information.
 		
 		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
 		
@@ -82,11 +81,11 @@ There are two layers of authentication to create secure connection between serve
 		
 		>openssl genrsa -out server.key 2048
 		
-		Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+		Generate a CSR (Certificate Signing Request). You need to enter a list of information.
 		
 		>openssl req -new -key server.key -out server.csr
 		
-		Generate configuration file (server.ext). If you have domain name server, you can add address of your RP-C. Otherwise, you can add ip address of your RP-C.
+		Generate a configuration file (server.ext). If you have a domain name server, you can add the address of your RP-C. Otherwise, you can add the IP address of your RP-C.
 		
 		```
 		authorityKeyIdentifier=keyid,issuer
@@ -99,42 +98,42 @@ There are two layers of authentication to create secure connection between serve
 		DNS.1 = www.your-domain.com
 		```
 		
-		Generate server Certificate.
+		Generate a server Certificate.
 		
 		>openssl x509 -req -in ./server.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./server.crt -days 825 -sha256 -extfile ./server.ext
 		
-		Convert server key and certificate to DER format to import to RP-C via webserver settings API
+		Convert the server key and certificate to DER format to import to RP-C via web server settings API.
 		
 		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
 		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 		
-		Convert server key and certificate to pfx format to import to RP-C via Web Service Configuration Tool
+		Convert the server key and certificate to pfx format in order to import to RP-C via SpaceLogic Certificate Configuration Tool
 		
 		>openssl pkcs12 -export -out ./output/server.pfx -inkey server.key -in server.crt		
 	
-	- Client Certificate Authentication (Optional)
+	- Client Authentication Certificate (Optional)
 	
-		Server can authenticate a client using Certificate. You can also create self-signed certificates to set this up.
+		The server can authenticate a client using the certificate. You can also create self-signed certificates to configure this.
 		
-		First of all, Generate root key. To protect your key, please set up pass phrase.
+		First of all, generate a root key. To protect your key, set up a passphrase.
 		
 		>openssl genrsa -des3 -out rootCA.key 2048
 		
-		Then, generate a root certificate. You need to fill out a list of information.
+		Then, generate a root certificate. You need to enter a list of information.
 		
 		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
 		
-		Now, you need to create client key and certificate using this root certificate.
+		Now, Create a client key and a certificate using this root certificate.
 		
-		Generate client key.
+		Generate a client key.
 		
 		>openssl genrsa -out client.key 2048
 		
-		Generate CSR (Certificate Signing Request). You need to fill out a list of information.
+		Generate a CSR (Certificate Signing Request). You need to enter a list of information.
 		
 		>openssl req -new -key client.key -out client.csr
 		
-		Generate configuration file (client.ext).
+		Generate a configuration file (client.ext).
 		
 		```
 		authorityKeyIdentifier = keyid,issuer
@@ -146,29 +145,29 @@ There are two layers of authentication to create secure connection between serve
 		extendedKeyUsage = clientAuth, emailProtection
 		```
 		
-		Generate client Certificate.
+		Generate a client Certificate.
 		
 		>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
 		
-		Convert root CA certificate to DER format to import to RP-C
+		Convert the root CA certificate to DER format in order to import to RP-C.
 		
 		>openssl x509 -inform PEM -in rootCA.pem -outform DER -out rootCA.der
 		
-		If you are using soap ui for development, you need to merge client key and certificate to pfx format.
+		If you are using SOAP UI for development, you need to merge the client key and certificate to pfx format.
 
 		>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
 - Token based user authentication (Local and Centralized)
 
-	Token-based authentication is a process where the client application first send a request to server with a valid credencials. The server send an Access Token back to the client as response. The client application then use the token to acess the restricted resources in the next request until the token is valid.
+	Token-based authentication is a process where the client application first send a request to a server with a valid credencials. The server sends an access token back to the client as response. The client application then uses the token to acess the restricted resources in the next request until the token is valid.
 	
-	RP-C returns a Web Token which contains enough data to identity a particular user and it has expiry time. If the token is expired, the client application can request for a new access token.
+	The RP-C returns a access token which contains enough data to identity a particular user. The token has expiry time and if the token is expired, the client application can request for a new access token.
 	
 	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:40%;" /> 
 	
 - Centralized user authentication 
 
-	- If you are using EcoStructure System and want user authentication from there, you need to enable **EWS Server**.
+	- If you are using the EcoStructure BMS System and want user authentication, enable the **EWS Server**.
 
 	- In WorkStation, in the **System Tree** pane, expand **System** of a server (Enterprise Server or Automation Server).
 
@@ -176,23 +175,23 @@ There are two layers of authentication to create secure connection between serve
 
 	- In the Configuration Information box, enable **EWS Server**.
 
-	- Create Authentication Point for RP-C Web Service
+	- Create an Authentication Point for the RP-C Web Service
 
-		- Create a folder in a server (Enterprise Server or Automation Server).
+		- Create a folder in the EcoStructure BMS server (Enterprise Server or Automation Server).
 
 		- Create a **Digital Value** object.
 
-		- Here's example of authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
+		- Here's example of an authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
 
 			<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/AuthenticationPoint.PNG" style="zoom:80%;" /> 
 
-	- Enable EWS authentication on RP-C using webserver settings API.
+	- Enable EWS authentication on the RP-C using the web server settings API. Ensure the following:
 
-		- **ewsUserAuthEnabled** need to be true.
+		- **ewsUserAuthEnabled** is true.
 
-		- **ewsIPAddress** and **ewsPortNumber** should be from a server (Enterprise Server or Automation Server).
+		- **ewsIPAddress** and **ewsPortNumber** are from the EcoStructure BMS server (Enterprise Server or Automation Server).
 
-		- **ewsResourceId** is from authentication point.
+		- **ewsResourceId** is from an authentication point.
 
 ## Response Codes
 
@@ -729,15 +728,15 @@ In case of proprietary properties, please refer to [RP-C PICS Protocol document]
 
 # Support
 
-Contact the Exchange support team at exchange.support@se.com.
+Contact the Schneider Electric Exchange support team at exchange.support@se.com.
 
 
 # Authentication
 
-If client certificate authentication is enabled, client need to have a vaild client certificate to be authenticated.
+If client certificate authentication is enabled, a client need to have a vaild client certificate for authentication.
 
-Local user authentication or EWS(Centralized) user authentication is required based on Web Service settting.
+Local user authentication or EWS (Centralized) user authentication is required based on the web service settting.
 
-Token based user authentication is available to protect user password. Basic authentication is required to get a access token.
+Token-based user authentication is available to protect a user password. Basic authentication is required to get a access token.
 
-For more information, please refer to Developer Guide > Authentication Guide in this document.
+For more information, see the Authentication Guide section in this document.
