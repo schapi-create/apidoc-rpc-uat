@@ -24,7 +24,7 @@ In case of an EcoStructure System with multiple RP-Cs, users can be authenticate
 
 ## How to enable the Web API on RP-C
 
-1.	Please update the RP-C with firmware which supports Web Service Feature.
+1.	Update the RP-C with firmware which supports Web Service Feature.
 
 2.	Configure Web Service Settings.
 
@@ -32,9 +32,9 @@ In case of an EcoStructure System with multiple RP-Cs, users can be authenticate
 	
 	- Click and expand the **System** folder.
 	
-	- In the **Web Service** box, enter the address of the **Web Service configuration tool** and enable the Web Service.
+	- In the **Web Service** box, enter the address of the **SpaceLogic Certificate configuration tool** and enable the Web Service.
 	
-		- Ensure that Web Service Configuration Tool with configuration of the RP-C needs to be running prior to enabling Web Service. This is required for the first setup only.
+		- Ensure that the SpaceLogic Certificate Configuration Tool with configuration of the RP-C is running prior to enabling Web Service. This is required for the first setup only.
 	
 		- Run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**), if you don't see the Web Service box.
 		
@@ -42,12 +42,12 @@ In case of an EcoStructure System with multiple RP-Cs, users can be authenticate
 
 3.	Update admin user name and password as soon as the Web Service is enabled for security.
 
-4.	Generate the mandatory Service certificate and key for each RP-C. You can deploy the Service Certificate and key can be deployed using the **SpaceLogic Certificate Configuration Tool** (First time only) or APIs in web server settings.
+4.	Generate the mandatory Service certificate and key for each RP-C. You can deploy the Service Certificate and the key can be deployed using the **SpaceLogic Certificate Configuration Tool** (First time only) or APIs in web server settings.
 
 
 ## Limitations
 
-The number of calls to the API in the Sandbox could be limited.
+The number of calls to the API in the Sandbox is limited.
 
 The Sandbox application for this API document will return BACnet object data based on [RP-33 FCU.A01.194_2c](https://bms-applications.schneider-electric.com/type/RP/download/33) BMS application.
 
@@ -63,7 +63,7 @@ There are two layers of authentication when creating secure connection between t
 	
 	- Server Certificate Validation
 	
-		To protect a https client, a server need to return certificate to the client. The client should be able to validate identity and ownership of certificate from the server using CA Certificate.
+		To protect a HTTPS client, a server need to return the certificate to the client. The client should be able to validate identity and ownership of the certificate from the server using the CA Certificate.
 		
 		You can create self-signed certificates to set this up.
 		
@@ -75,7 +75,7 @@ There are two layers of authentication when creating secure connection between t
 		
 		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
 		
-		Now, you need to create server key and certificate using this root certificate.
+		Now, you need to create the server key and certificate using this root certificate.
 		
 		Generate server key.
 		
@@ -107,7 +107,7 @@ There are two layers of authentication when creating secure connection between t
 		>openssl rsa -inform PEM -outform DER -in ./server.key -out ./server.key.der
 		>openssl x509 -inform PEM -outform DER -in ./server.crt -out ./server.crt.der
 		
-		Convert the server key and certificate to pfx format in order to import to RP-C via SpaceLogic Certificate Configuration Tool
+		Convert the server key and certificate to .pfx format in order to import them to the RP-C via the SpaceLogic Certificate Configuration Tool. For more information about installing and using the tool, see the EcoStruxure Building Operation Technical Reference Guide.
 		
 		>openssl pkcs12 -export -out ./output/server.pfx -inkey server.key -in server.crt		
 	
@@ -123,7 +123,7 @@ There are two layers of authentication when creating secure connection between t
 		
 		>openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 1825 -out rootCA.pem
 		
-		Now, Create a client key and a certificate using this root certificate.
+		Now, create a client key and a certificate using this root certificate.
 		
 		Generate a client key.
 		
@@ -145,7 +145,7 @@ There are two layers of authentication when creating secure connection between t
 		extendedKeyUsage = clientAuth, emailProtection
 		```
 		
-		Generate a client Certificate.
+		Generate a client certificate.
 		
 		>openssl x509 -req -in ./client.csr -CA ./rootCA.pem -CAkey ./rootCA.key -CAcreateserial -out ./client.crt -days 365 -sha256 -extfile ./client.ext
 		
@@ -157,11 +157,11 @@ There are two layers of authentication when creating secure connection between t
 
 		>openssl pkcs12 -export -out client.pfx -inkey client.key -in client.crt -certfile rootCA.pem
 
-- Token based user authentication (Local and Centralized)
+- Token-based user authentication (Local and Centralized)
 
 	Token-based authentication is a process where the client application first send a request to a server with a valid credencials. The server sends an access token back to the client as response. The client application then uses the token to acess the restricted resources in the next request until the token is valid.
 	
-	The RP-C returns a access token which contains enough data to identity a particular user. The token has expiry time and if the token is expired, the client application can request for a new access token.
+	The RP-C returns an access token which contains enough data to identity a particular user. The token has an expiry time and if the token expires, the client application can request a new access token.
 	
 	<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/TokenBasedAuthentication_v2.png" style="zoom:40%;" /> 
 	
@@ -169,7 +169,7 @@ There are two layers of authentication when creating secure connection between t
 
 	- If you are using the EcoStructure BMS System and want user authentication, enable the **EWS Server**.
 
-	- In WorkStation, in the **System Tree** pane, expand **System** of a server (Enterprise Server or Automation Server).
+	- In WorkStation, in the **System Tree** pane, expand the **System** of a server (Enterprise Server or Automation Server).
 
 	- In the **List View**, click **Eco Structure Web Services** and **EWS Server Configuration**.
 
@@ -181,7 +181,7 @@ There are two layers of authentication when creating secure connection between t
 
 		- Create a **Digital Value** object.
 
-		- Here's example of an authentication point. In this case, **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
+		- Here's example of an authentication point. In this case, the **ewsResourceId** is **01/Server 1/RPC_WebAPI/WebAPI_Authentication_Point**.
 
 			<img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/AuthenticationPoint.PNG" style="zoom:80%;" /> 
 
@@ -733,7 +733,7 @@ Contact the Schneider Electric Exchange support team at exchange.support@se.com.
 
 # Authentication
 
-If client certificate authentication is enabled, a client need to have a vaild client certificate for authentication.
+If client certificate authentication is enabled, a client needs to have a vaild client certificate for authentication.
 
 Local user authentication or EWS (Centralized) user authentication is required based on the web service settting.
 

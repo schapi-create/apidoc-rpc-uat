@@ -423,7 +423,7 @@
           "local object"
         ],
         "summary": "Getting Object List",
-        "description": "A list of object Ids that are accessible via the APIs.  \nHere's a list of object types available.\n- 0: Analog-Input Object\n- 1: Analog-Output Object\n- 2: Analog-Value Object\n- 3: Binary-Input Object\n- 4: Binary-Output Object\n- 5: Binary-Value Object\n- 13: Multi-state Input Object\n- 14: Multi-state Output Object\n- 19: Multi-state Value Object\n- 45: Integer-Value Object\n\nThe Sandbox application for this API document return BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
+        "description": "A list of object Ids that are accessible via the APIs.  \nHere's a list of object types available.\n- 0: Analog-Input Object\n- 1: Analog-Output Object\n- 2: Analog-Value Object\n- 3: Binary-Input Object\n- 4: Binary-Output Object\n- 5: Binary-Value Object\n- 13: Multi-state Input Object\n- 14: Multi-state Output Object\n- 19: Multi-state Value Object\n- 45: Integer-Value Object\n\nThe Sandbox application for this API document return BACnet object data based on the RP-33 BMS application. For more information, see the Limitations section in this document.",
         "operationId": "gettingobject",
         "produces": [
           "application/json"
@@ -453,7 +453,7 @@
           "local object"
         ],
         "summary": "Find BACnet object by ID",
-        "description": "A single object is returned.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
+        "description": "A single object is returned.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see the Limitations section in this document.",
         "operationId": "getObjectById",
         "produces": [
           "application/json"
@@ -486,7 +486,7 @@
           "local object"
         ],
         "summary": "Getting Property List",
-        "description": "A list of propertyIDs that exist on the object is returned.\\\nYou will find BACNet Property Identifier from BACNet protocol document.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
+        "description": "A list of propertyIDs that exist on the object is returned.\\\nYou will find the BACnet Property Identifier in the BACnet protocol document.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see the Limitations section in this document.",
         "operationId": "getObjectPropertiesById",
         "produces": [
           "application/json"
@@ -519,7 +519,7 @@
           "local object"
         ],
         "summary": "Find BACnet property by ID",
-        "description": "A single property is returned\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
+        "description": "A single property is returned\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see the Limitations section in this document.",
         "operationId": "getPropertyById",
         "produces": [
           "application/json"
@@ -535,7 +535,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in the document.",
+            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in this document.",
             "required": true,
             "type": "integer"
           }
@@ -557,7 +557,7 @@
           "local object"
         ],
         "summary": "Updated value of property",
-        "description": "The property value is updated and returned\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see Limitations subsectionin this document.",
+        "description": "The property value is updated and returned.\n\nThe SandBox application for this API document returns BACnet object data based on RP-33 BMS application. For more information, see the Limitations section in this document.",
         "operationId": "updatePropertyValue",
         "produces": [
           "application/json"
@@ -573,7 +573,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in the document.",
+            "description": "unique property identifier. For more information, see the BACnet Property Identifier subsection in this document.",
             "required": true,
             "type": "integer"
           },
