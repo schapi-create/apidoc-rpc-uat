@@ -9,7 +9,7 @@
   },
   "x-servers": [
     {
-      "url": "https://sandboxrpdev.azurewebsites.net",
+      "url": "https://sandboxrprel.azurewebsites.net",
       "description": "Sandbox"
     }
   ],
