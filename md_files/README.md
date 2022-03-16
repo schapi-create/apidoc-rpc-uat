@@ -3,7 +3,7 @@
 <img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/schneider_LOGO.jpg" style="zoom:60%;" /> 
 
 
-## API overview and usage -TEST
+## API overview and usage
 
 This document explain how to use the **RP-C** Web Service API. It provides a general tutorial for users who want to consume the RP-C Web Service API and obtain BACnet objects and properties from the RP-C.
 
