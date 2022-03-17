@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 <img src="https://github.com/SESA545913/SE-EnergyManagement-Team/raw/main/schneider_LOGO.jpg" style="zoom:60%;" /> 
 
