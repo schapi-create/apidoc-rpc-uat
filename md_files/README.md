@@ -272,7 +272,8 @@ ack-required (1) \
 action (2) \
 action-text (3) \
 active-text (4) \
-active-vt-sessions (5) \alarm-value (6) \
+active-vt-sessions (5) \
+alarm-value (6) \
 alarm-values (7) \
 all (8) \
 all-writes-successful (9) \
