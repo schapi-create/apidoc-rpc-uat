@@ -28,17 +28,17 @@ In case of an EcoStructure System with multiple RP-Cs, users can be authenticate
 
 2.	Configure Web Service Settings.
 
-	- In WorkStation, in the **System Tree** pane, expand the RP controller.
+	   - In WorkStation, in the **System Tree** pane, expand the RP controller.
 	
-	- Click and expand the **System** folder.
+	   - Click and expand the **System** folder.
 	
-	- In the **Web Service** box, enter the address of the **SpaceLogic Certificate configuration tool** and enable the Web Service.
+	   - In the **Web Service** box, enter the address of the **SpaceLogic Certificate configuration tool** and enable the Web Service.
 	
-		- Ensure that the SpaceLogic Certificate Configuration Tool with configuration of the RP-C is running prior to enabling Web Service. This is required for the first setup only.
+		  - Ensure that the SpaceLogic Certificate Configuration Tool with configuration of the RP-C is running prior to enabling Web Service. This is required for the first setup only.
 	
-		- Run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**), if you don't see the Web Service box.
+		  - Run **Restore optional properties**. (**Device** -> **Advanced** -> **Restore optional properties**), if you don't see the Web Service box.
 		
-	- The Web Service State will be **Running** if Web Service starts successfully.
+	   - The Web Service State will be **Running** if Web Service starts successfully.
 
 3.	Update admin user name and password as soon as the Web Service is enabled for security.
 
